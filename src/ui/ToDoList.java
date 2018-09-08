@@ -12,6 +12,7 @@ public class ToDoList {
         "Press 2 to add a task. " + "Press 3 to remove a task.");
     }
     public void handleKeys() {
+        System.out.println("--- Handles Keys ---");
     }
 
     public static void main(String[] args) {
@@ -20,6 +21,7 @@ public class ToDoList {
         ToDoList tdl = new ToDoList();
         tdl.welcomeSign();
         tdl.generateOptions();
+        tdl.handleKeys();
 
         options.close();
     }
