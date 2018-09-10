@@ -1,5 +1,7 @@
 package ui;
 
+import events.HandleKeys;
+
 import java.util.*;
 
 public class ToDoList {
@@ -16,12 +18,10 @@ public class ToDoList {
     }
 
     public static void main(String[] args) {
-        Scanner options = new Scanner(System.in);
 
         welcomeSign();
         generateOptions();
         handleKeys();
 
-        options.close();
     }
 }

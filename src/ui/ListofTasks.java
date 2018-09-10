@@ -1,16 +1,16 @@
 package ui;
-import java.util.*;
+import java.util.Vector;
 
-public class Tasks {
+public class ListofTasks {
     private int numTasks;
-    private Vector<String> tasks;
+    private Vector<Task> tasks;
 
     public int getTasks() {
         return numTasks;
     }
 
-    public void addTask(String str) {
-        tasks.add(str);
+    public void addTask(Task task) {
+        tasks.add(task);
         numTasks += 1;
     }
 
