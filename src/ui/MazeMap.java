@@ -5,7 +5,7 @@ public class MazeMap {
     private int mazeYLength;
     private String[][] maze;
 
-    MazeMap(int x, int y) {
+    public MazeMap(int x, int y) {
         this.mazeXLength = x;
         this.mazeYLength = y;
         this.maze = new String[x][y];
