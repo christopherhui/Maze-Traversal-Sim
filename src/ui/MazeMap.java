@@ -22,7 +22,7 @@ public class MazeMap {
         return mazeXLength;
     }
 
-    public int get_due_date() {
+    public int get_y() {
         return mazeYLength;
     }
 

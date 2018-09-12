@@ -1,5 +1,7 @@
 package events;
 
+import java.util.ArrayList;
+
 public class Status {
     private boolean status0;
     private boolean status1;
@@ -12,7 +14,15 @@ public class Status {
     }
 
     public boolean get_status() {
-        return false;
+        if (status0) {
+            return status0;
+        }
+        else if (status1) {
+            return status1;
+        }
+        else {
+            return status2;
+        }
     }
 
     public void change_status() {
