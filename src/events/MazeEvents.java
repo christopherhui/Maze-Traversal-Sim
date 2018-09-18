@@ -27,10 +27,14 @@ public class MazeEvents {
                             maze_create();
                             break;
                         case 2:
-                            System.out.println("");
+                            if (lom.get_mazes() == 0)
+                                System.out.println("No mazes available!");
+                            else
+                                // TODO: Complete the function
+                                System.out.println("What maze do you want to open?");
                             break;
                         case 3:
-                            System.out.println("Closing...\nThank you for playing!");
+                            System.out.println("Closing...\nThank you for using maze simulator!");
                             keys.close();
                             System.exit(0);  // Required as keys.hasNextInt() throws IllegalException if scanner closes
                             break;
@@ -57,7 +61,8 @@ public class MazeEvents {
                         int y = Integer.parseInt(xyTuple[1]);
                         if (x <= 1 || y <= 1) {
                             System.out.println("Maze dimensions are smaller than 2, please try again.");
-                        } else {
+                        }
+                        else {
                             MazeMap maze = new MazeMap(x, y);
                             System.out.println("Maze successfully created.\n");
                             lom.add_maze(maze);
