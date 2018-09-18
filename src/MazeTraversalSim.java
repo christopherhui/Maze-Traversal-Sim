@@ -1,14 +1,15 @@
 import events.MazeEvents;
-import ui.MazeMap;
+import ui.ListofMazes;
 
 public class MazeTraversalSim {
     private static void welcome_sign() {
-        System.out.println("Welcome to your create a maze.");
+        System.out.println("----------------------------------------" +
+                " Main Menu ----------------------------------------");
     }
 
     private static void generate_options() {
-        System.out.println("Options: Press 1 to create a maze. Press 2 to open a preexisting maze. " +
-                "Press 3 to import a maze. Press 4 to close the application.");
+        System.out.println("Press 1 to create a maze. Press 2 to open a preexisting maze. " +
+                "Press 3 to close the application.");
     }
 
     public static void main(String[] args) {

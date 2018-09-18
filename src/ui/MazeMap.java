@@ -26,6 +26,10 @@ public class MazeMap {
         return mazeYLength;
     }
 
+    public int get_area() {
+        return mazeXLength * mazeYLength;
+    }
+
     public String[][] get_maze() {
         return maze;
     }

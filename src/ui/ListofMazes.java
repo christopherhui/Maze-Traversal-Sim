@@ -1,9 +1,15 @@
 package ui;
-import java.util.Vector;
+import java.util.List;
+import java.util.ArrayList;
 
 public class ListofMazes {
     private int numMazes;
-    private Vector<MazeMap> mazeMaps;
+    private List<MazeMap> mazeMaps;
+
+    public ListofMazes() {
+        this.numMazes = 0;
+        mazeMaps = new ArrayList<>();
+    }
 
     public int get_mazes() {
         return numMazes;
@@ -15,12 +21,12 @@ public class ListofMazes {
     }
 
     public void print_maze(int x) {
-        System.out.println(mazeMaps.get(x).get_maze());
+        // Stub
     }
 
     public void print_all_mazes() {
-        for (MazeMap m : mazeMaps) {
-            System.out.println(m.get_maze());
+        for (MazeMap maze : mazeMaps) {
+            System.out.println(maze.get_maze());
         }
     }
 }
