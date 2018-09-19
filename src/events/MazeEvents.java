@@ -9,10 +9,16 @@ import java.util.Scanner;
 // todo: Can we parse without using a try/catch block?
 public class MazeEvents {
 
+    public MazeEvents() {
+        handle_key();
+    }
+
     public void handle_key() {
         Scanner keys = new Scanner(System.in);
         Status st = new Status();
         ListofMazes lom = new ListofMazes(); // Please put this somewhere else!
+
+        main_menu();
 
         while (keys.hasNext()) {
             String key = keys.nextLine();
@@ -78,14 +84,14 @@ public class MazeEvents {
         }
     }
 
-    private static void main_menu() {
+    private void main_menu() {
         System.out.println("----------------------------------------" +
                 " Main Menu ----------------------------------------");
         System.out.println("Press 1 to create a maze. Press 2 to open a preexisting maze. " +
                 "Press 3 to close the application.");
     }
 
-    private static void maze_create() {
+    private void maze_create() {
         System.out.println("--------------" +
                 " Maze Creation --------------");
         System.out.println("Enter the dimensions of your maze by using: x,y");
