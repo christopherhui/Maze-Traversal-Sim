@@ -6,13 +6,10 @@ import ui.MazeMap;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// todo: Can we parse without using a try/catch block?
 public class MazeEvents {
 
-    public MazeEvents() {
-        handle_key();
-    }
-
+    //
+    //
     public void handle_key() {
         Scanner keys = new Scanner(System.in);
         Status st = new Status();
