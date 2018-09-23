@@ -7,21 +7,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MazeEvents {
-    Scanner keys;
-    Status st;
+    private Scanner keys;
 
     public MazeEvents() {
         this.keys = new Scanner(System.in);
-        this.st = new Status();
-        handle_key();
     }
 
     // REQUIRES: Is a String input
-    // MODIFIES: this, lom
+    // MODIFIES: this, lom, st
     // EFFECTS: Runs the main events for the creation, edit, and deletion of mazes
     public void handle_key() {
 
         ListofMazes lom = new ListofMazes();
+        Status st = new Status();
 
         main_menu();
 
@@ -29,25 +27,25 @@ public class MazeEvents {
             String key = keys.nextLine();
 
             if (st.get_status() == 0) {
-                run_status_zero(key, lom);
+                run_status_zero(key, lom, st);
             }
 
             else if(st.get_status() == 1) {
-                run_status_one(key, lom);
+                run_status_one(key, lom, st);
             }
         }
     }
 
     // REQUIRES: Is a String input
-    // MODIFIES: this, lom (in the future)
+    // MODIFIES: this, lom (in the future), st
     // EFFECTS: Runs the creation, access of a maze and termination of program
-    public void run_status_zero(String key, ListofMazes lom) {
+    public void run_status_zero(String key, ListofMazes lom, Status st) {
         try {
             int cmd = Integer.parseInt(key);
             switch (cmd) {
                 case 1:
                     st.change_status(1);
-                    maze_create();
+                    maze_create_msg();
                     break;
                 case 2:
                     if (lom.get_mazes() == 0)
@@ -71,9 +69,9 @@ public class MazeEvents {
     }
 
     // REQUIRES: Is a String input
-    // MODIFIES: this, lom
+    // MODIFIES: this, lom, st
     // EFFECTS: Creates a maze with w,h dimensions, and must have values greater than 1
-    public void run_status_one(String key, ListofMazes lom) {
+    public void run_status_one(String key, ListofMazes lom, Status st) {
         if (key.equals("back")) {
             st.change_status(0);
             System.out.println("Going back to Main Menu...");
@@ -109,9 +107,9 @@ public class MazeEvents {
                 "Press 3 to close the application.");
     }
 
-    private void maze_create() {
+    private void maze_create_msg() {
         System.out.println("--------------" +
                 " Maze Creation --------------");
-        System.out.println("Enter the dimensions of your maze by using: width,height");
+        System.out.println("Enter the dimensions of your maze by using: w,h");
     }
 }
