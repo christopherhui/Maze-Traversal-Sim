@@ -7,9 +7,9 @@ import ui.ListofMazes;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestMazeEvents {
-    MazeEvents me;
-    ListofMazes lom;
-    Status s;
+    private MazeEvents me;
+    private ListofMazes lom;
+    private Status s;
 
     @BeforeEach
     public void beforeTest() {
