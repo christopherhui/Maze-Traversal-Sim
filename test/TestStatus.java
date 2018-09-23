@@ -16,12 +16,12 @@ public class TestStatus {
     @Test
     public void changeStatusZero() {
         s.change_status(0);
-        assertEquals(s.get_status(), 0);
+        assertEquals(0, s.get_status());
     }
 
     @Test
     public void changeStatusOne() {
         s.change_status(1);
-        assertEquals(s.get_status(), 1);
+        assertEquals(1, s.get_status());
     }
 }

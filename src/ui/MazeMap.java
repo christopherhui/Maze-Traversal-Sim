@@ -40,7 +40,19 @@ public class MazeMap {
     }
 
     // EFFECTS: prints a x,y matrix representing the maze
-    public void print_maze() {
-        // Stub
+    public String toString() {
+        String s = "";
+        for (int i = 0; i < mazeXLength-1; i++) {
+            for (int j = 0; j < mazeYLength-1; j++) {
+                s += maze[i][j] + " ";
+            }
+            s += maze[i][mazeYLength-1];
+            s += "\n";
+        }
+        for (int j = 0; j < mazeYLength-1; j++) {
+            s += maze[mazeXLength-1][j] + " ";
+        }
+        s += maze[mazeXLength-1][mazeYLength-1];
+        return s;
     }
 }

@@ -24,6 +24,13 @@ public class ListofMazes {
         numMazes += 1;
     }
 
+    // REQUIRES: x must be an index between 0 and the length of the list - 1
+    // MODIFIES: this
+    // EFFFECTS: Removes a maze from the list of mazes at index x
+    public void remove_maze(int x) {
+
+    }
+
     // REQUIRES: mazeMaps has at least one maze
     // EFFECTS: Prints all mazes that are in mazeMaps
     public void print_all_mazes() {
