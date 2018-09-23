@@ -12,4 +12,22 @@ public class TestMazeMap {
 
         assertEquals("O O\nO O", maze.toString());
     }
+
+    @Test
+    public void createLargeHSmallW() {
+        MazeMap maze = new MazeMap(4,7);
+        assertEquals(28, maze.get_area());
+        assertEquals("O O O O\nO O O O\nO O O O\n" +
+                "O O O O\nO O O O\nO O O O\nO O O O", maze.toString());
+    }
+
+    @Test
+    public void createSmallHLargeW() {
+        MazeMap maze = new MazeMap(6, 10);
+        assertEquals(60, maze.get_area());
+        assertEquals("O O O O O O\nO O O O O O\nO O O O O O\n" +
+                "O O O O O O\nO O O O O O\nO O O O O O\n" +
+                "O O O O O O\nO O O O O O\nO O O O O O\n" +
+                "O O O O O O", maze.toString());
+    }
 }

@@ -1,37 +1,37 @@
 package ui;
 
 public class MazeMap {
-    private int mazeXLength;
-    private int mazeYLength;
+    private int mazeHLength;
+    private int mazeWLength;
     private String[][] maze;
 
-    // REQUIRES: Size of x and size of y is larger than 1
-    // EFFECTS: Creates an empty x*y size adjacency matrix
-    public MazeMap(int x, int y) {
-        this.mazeXLength = x;
-        this.mazeYLength = y;
-        this.maze = new String[x][y];
+    // REQUIRES: Size of w and size of h is larger than 1
+    // EFFECTS: Creates an empty w*h size adjacency matrix
+    public MazeMap(int w, int h) {
+        this.mazeWLength = w;
+        this.mazeHLength = h;
+        this.maze = new String[h][w];
 
-        for (int i = 0; i < mazeXLength; i++) {
-            for (int j = 0; j < mazeYLength; j++) {
+        for (int i = 0; i < mazeHLength; i++) {
+            for (int j = 0; j < mazeWLength; j++) {
                 maze[i][j] = "O";
             }
         }
     }
 
-    // EFFECTS: Returns the x-length of maze
-    public int get_x() {
-        return mazeXLength;
+    // EFFECTS: Returns the w-length of maze
+    public int get_w() {
+        return mazeWLength;
     }
 
-    // EFFECTS: Returns the y-length of maze
-    public int get_y() {
-        return mazeYLength;
+    // EFFECTS: Returns the h-length of maze
+    public int get_h() {
+        return mazeHLength;
     }
 
     // EFFECTS: Returns the area of maze
     public int get_area() {
-        return mazeXLength * mazeYLength;
+        return mazeWLength * mazeHLength;
     }
 
     // EFFECTS: Returns the maze
@@ -39,20 +39,20 @@ public class MazeMap {
         return maze;
     }
 
-    // EFFECTS: prints a x,y matrix representing the maze
+    // EFFECTS: prints a w,h matrix representing the maze
     public String toString() {
-        String s = "";
-        for (int i = 0; i < mazeXLength-1; i++) {
-            for (int j = 0; j < mazeYLength-1; j++) {
-                s += maze[i][j] + " ";
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < mazeHLength-1; i++) {
+            for (int j = 0; j < mazeWLength-1; j++) {
+                s.append(maze[i][j] + " ");
             }
-            s += maze[i][mazeYLength-1];
-            s += "\n";
+            s.append(maze[i][mazeWLength-1]);
+            s.append("\n");
         }
-        for (int j = 0; j < mazeYLength-1; j++) {
-            s += maze[mazeXLength-1][j] + " ";
+        for (int j = 0; j < mazeWLength-1; j++) {
+            s.append(maze[mazeHLength-1][j] + " ");
         }
-        s += maze[mazeXLength-1][mazeYLength-1];
-        return s;
+        s.append(maze[mazeHLength-1][mazeWLength-1]);
+        return s.toString();
     }
 }

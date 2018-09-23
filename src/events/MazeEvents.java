@@ -9,19 +9,19 @@ import java.util.Scanner;
 public class MazeEvents {
     Scanner keys;
     Status st;
-    ListofMazes lom;
 
     public MazeEvents() {
         this.keys = new Scanner(System.in);
         this.st = new Status();
-        this.lom = new ListofMazes();
         handle_key();
     }
 
     // REQUIRES: Is a String input
-    // MODIFIES: this
+    // MODIFIES: this, lom
     // EFFECTS: Runs the main events for the creation, edit, and deletion of mazes
     public void handle_key() {
+
+        ListofMazes lom = new ListofMazes();
 
         main_menu();
 
@@ -29,19 +29,19 @@ public class MazeEvents {
             String key = keys.nextLine();
 
             if (st.get_status() == 0) {
-                run_status_zero(key);
+                run_status_zero(key, lom);
             }
 
             else if(st.get_status() == 1) {
-                run_status_one(key);
+                run_status_one(key, lom);
             }
         }
     }
 
     // REQUIRES: Is a String input
-    // MODIFIES: this
+    // MODIFIES: this, lom (in the future)
     // EFFECTS: Runs the creation, access of a maze and termination of program
-    public void run_status_zero(String key) {
+    public void run_status_zero(String key, ListofMazes lom) {
         try {
             int cmd = Integer.parseInt(key);
             switch (cmd) {
@@ -71,9 +71,9 @@ public class MazeEvents {
     }
 
     // REQUIRES: Is a String input
-    // MODIFIES: this
-    // EFFECTS: Creates a maze with x,y dimensions, and must have values greater than 1
-    public void run_status_one(String key) {
+    // MODIFIES: this, lom
+    // EFFECTS: Creates a maze with w,h dimensions, and must have values greater than 1
+    public void run_status_one(String key, ListofMazes lom) {
         if (key.equals("back")) {
             st.change_status(0);
             System.out.println("Going back to Main Menu...");
@@ -83,13 +83,13 @@ public class MazeEvents {
             // TODO: Move the function so that it has a helper function instead
             try {
                 String[] xyTuple = key.split(",");
-                int x = Integer.parseInt(xyTuple[0]);
-                int y = Integer.parseInt(xyTuple[1]);
-                if (x <= 1 || y <= 1) {
+                int w = Integer.parseInt(xyTuple[0]);
+                int h = Integer.parseInt(xyTuple[1]);
+                if (w <= 1 || h <= 1) {
                     System.out.println("Maze dimensions are smaller than 2, please try again.");
                 }
                 else {
-                    MazeMap maze = new MazeMap(x, y);
+                    MazeMap maze = new MazeMap(w, h);
                     System.out.println("Maze successfully created.\n");
                     lom.add_maze(maze);
                     st.change_status(0);
@@ -112,6 +112,6 @@ public class MazeEvents {
     private void maze_create() {
         System.out.println("--------------" +
                 " Maze Creation --------------");
-        System.out.println("Enter the dimensions of your maze by using: x,y");
+        System.out.println("Enter the dimensions of your maze by using: width,height");
     }
 }
