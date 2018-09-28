@@ -1,4 +1,4 @@
-import events.Status;
+import model.Status;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

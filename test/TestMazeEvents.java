@@ -1,8 +1,8 @@
-import events.MazeEvents;
-import events.Status;
+import ui.MazeEvents;
+import model.Status;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.ListofMazes;
+import model.ListofMazes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -39,19 +39,19 @@ public class TestMazeEvents {
         s.change_status(1);
         me.run_status_one("1,1", lom, s);
         assertEquals(1, s.get_status());
-        assertEquals(0, lom.get_mazes());
+        assertEquals(0, lom.get_num_mazes());
 
         me.run_status_one("10,-5", lom, s);
         assertEquals(1, s.get_status());
-        assertEquals(0, lom.get_mazes());
+        assertEquals(0, lom.get_num_mazes());
 
         me.run_status_one("1,22", lom, s);
         assertEquals(1, s.get_status());
-        assertEquals(0, lom.get_mazes());
+        assertEquals(0, lom.get_num_mazes());
 
         me.run_status_one("test", lom, s);
         assertEquals(1, s.get_status());
-        assertEquals(0, lom.get_mazes());
+        assertEquals(0, lom.get_num_mazes());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class TestMazeEvents {
         s.change_status(1);
         me.run_status_one("2,2", lom, s);
         assertEquals(0, s.get_status());
-        assertEquals(1, lom.get_mazes());
+        assertEquals(1, lom.get_num_mazes());
     }
 
     @Test
@@ -72,6 +72,6 @@ public class TestMazeEvents {
         me.run_status_one("100,230", lom, s);
 
         assertEquals(0, s.get_status());
-        assertEquals(3, lom.get_mazes());
+        assertEquals(3, lom.get_num_mazes());
     }
 }

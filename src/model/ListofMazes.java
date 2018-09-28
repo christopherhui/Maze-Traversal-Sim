@@ -1,4 +1,6 @@
-package ui;
+package model;
+import model.MazeMap;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -13,15 +15,23 @@ public class ListofMazes {
     }
 
     // EFFECTS: Return the number of mazes in the list
-    public int get_mazes() {
+    public int get_num_mazes() {
         return numMazes;
     }
+
+    // EFFECTS: Return the mazes in mazeMap
+    public List<MazeMap> get_mazes() {return mazeMaps;}
 
     // MODIFIES: this
     // EFFECTS: Adds a maze to mazeMaps
     public void add_maze(MazeMap mazeMap) {
         mazeMaps.add(mazeMap);
         numMazes += 1;
+    }
+
+    // REQUIRES: index is within range bounds
+    public MazeMap get_maze(int i) {
+        return mazeMaps.get(i);
     }
 
     // REQUIRES: x must be an index between 0 and the length of the list - 1

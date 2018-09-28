@@ -1,5 +1,5 @@
 import org.junit.jupiter.api.Test;
-import ui.MazeMap;
+import model.MazeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

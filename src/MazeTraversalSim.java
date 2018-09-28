@@ -1,5 +1,4 @@
-import events.MazeEvents;
-import ui.ListofMazes;
+import ui.MazeEvents;
 
 public class MazeTraversalSim {
 
