@@ -16,7 +16,7 @@ public class ListofMazes {
 
     // EFFECTS: Return the number of mazes in the list
     public int get_num_mazes() {
-        return numMazes;
+        return mazeMaps.size();
     }
 
     // EFFECTS: Return the mazes in mazeMap
@@ -38,7 +38,8 @@ public class ListofMazes {
     // MODIFIES: this
     // EFFFECTS: Removes a maze from the list of mazes at index x
     public void remove_maze(int x) {
-
+        mazeMaps.remove(x);
+        numMazes -= 1;
     }
 
     // REQUIRES: mazeMaps has at least one maze

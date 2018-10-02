@@ -78,7 +78,6 @@ public class MazeEvents {
             main_menu();
         }
         else {
-            // TODO: Move the function so that it has a helper function instead
             try {
                 String[] xyTuple = key.split(",");
                 int w = Integer.parseInt(xyTuple[0]);

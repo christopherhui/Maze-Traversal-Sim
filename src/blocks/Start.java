@@ -1,29 +1,15 @@
 package blocks;
 
-public class Start implements Block, Display{
-
-    String backgroundColor;
-    String textColor;
-    int status;
+public class Start extends SpecializedBlock{
+    private boolean found;
 
     public Start() {
-        backgroundColor = "White";
+        super();
         textColor = "Red";
-        status = 0;
-    }
-
-    @Override
-    public String get_background_color() {
-        return backgroundColor;
     }
 
     public String get_text_color() {
         return textColor;
-    }
-
-    @Override
-    public int get_status() {
-        return status;
     }
 
     @Override

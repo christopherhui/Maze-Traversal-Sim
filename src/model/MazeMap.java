@@ -7,7 +7,7 @@ import java.util.List;
 public class MazeMap {
     private int mazeHLength;
     private int mazeWLength;
-    private Block[][] maze;
+    private SpecializedBlock[][] maze;
 
     // TODO: change to different data structure
     // REQUIRES: Size of w and size of h is larger than 1
@@ -15,7 +15,7 @@ public class MazeMap {
     public MazeMap(int w, int h) {
         this.mazeWLength = w;
         this.mazeHLength = h;
-        this.maze = new Block[h][w];
+        this.maze = new SpecializedBlock[h][w];
 
         for (int i = 0; i < mazeHLength; i++) {
             for (int j = 0; j < mazeWLength; j++) {
@@ -30,7 +30,7 @@ public class MazeMap {
         String[] mazeRows = m.split("-");
         this.mazeWLength = mazeRows[0].length();
         this.mazeHLength = mazeRows.length;
-        this.maze = new Block[mazeHLength][mazeWLength];
+        this.maze = new SpecializedBlock[mazeHLength][mazeWLength];
 
         for (int i = 0; i < mazeHLength; i++) {
             for (int j = 0; j < mazeWLength; j++) {
@@ -55,7 +55,7 @@ public class MazeMap {
     }
 
     // EFFECTS: Returns the maze
-    public Block[][] get_maze() {
+    public SpecializedBlock[][] get_maze() {
         return maze;
     }
 
@@ -77,12 +77,13 @@ public class MazeMap {
         return s.toString();
     }
 
-    private Block block_converter(String s) {
+    // EFFECTS: Changes a String to a Block object representing a block in a maze
+    private SpecializedBlock block_converter(String s) {
         switch(s) {
             case "O":
                 return new EmptySpace();
             case "E":
-                return new End();
+                return (End)new End();
             case "F":
                 return new Location();
             case "S":

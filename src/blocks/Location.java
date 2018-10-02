@@ -1,22 +1,10 @@
 package blocks;
 
-public class Location implements Block, Display {
-    String backgroundColor;
-    int status;
+public class Location extends SpecializedBlock {
 
     public Location() {
-        backgroundColor = "White";
-        status = 0;
-    }
-
-    @Override
-    public String get_background_color() {
-        return backgroundColor;
-    }
-
-    @Override
-    public int get_status() {
-        return status;
+        super();
+        backgroundColor = "Green";
     }
 
     @Override

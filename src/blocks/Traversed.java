@@ -1,22 +1,10 @@
 package blocks;
 
-public class Traversed implements Block, Display {
-    String backgroundColor;
-    int status;
+public class Traversed extends SpecializedBlock {
 
     public Traversed() {
-        backgroundColor = "White";
+        backgroundColor = "Grey";
         status = 1;
-    }
-
-    @Override
-    public String get_background_color() {
-        return backgroundColor;
-    }
-
-    @Override
-    public int get_status() {
-        return status;
     }
 
     @Override

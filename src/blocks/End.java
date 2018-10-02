@@ -1,28 +1,15 @@
 package blocks;
 
-public class End implements Block, Display {
-    String backgroundColor;
-    String textColor;
-    int status;
+public class End extends SpecializedBlock {
+    private boolean found;
 
     public End() {
-        backgroundColor = "White";
+        super();
         textColor = "Blue";
-        status = 0;
-    }
-
-    @Override
-    public String get_background_color() {
-        return backgroundColor;
     }
 
     public String get_text_color() {
         return textColor;
-    }
-
-    @Override
-    public int get_status() {
-        return status;
     }
 
     @Override
