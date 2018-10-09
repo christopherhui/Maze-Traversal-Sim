@@ -8,10 +8,6 @@ public class Start extends SpecializedBlock{
         textColor = "Red";
     }
 
-    public String get_text_color() {
-        return textColor;
-    }
-
     @Override
     public String to_display() {
         return "S";

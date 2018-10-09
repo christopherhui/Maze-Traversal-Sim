@@ -77,13 +77,21 @@ public class MazeMap {
         return s.toString();
     }
 
+    // REQUIRES: w and h must be within the bounds of MazeMap and must be a valid block type
+    // MODIFIES: this
+    // EFFECTS: changes the maze with a type of block at w,h
+    public void changeBlock(int w, int h, String s) {
+        maze[w][h] = block_converter(s);
+    }
+
+    // REQUIRES: must be a valid block type
     // EFFECTS: Changes a String to a Block object representing a block in a maze
     private SpecializedBlock block_converter(String s) {
         switch(s) {
             case "O":
                 return new EmptySpace();
             case "E":
-                return (End)new End();
+                return new End();
             case "F":
                 return new Location();
             case "S":

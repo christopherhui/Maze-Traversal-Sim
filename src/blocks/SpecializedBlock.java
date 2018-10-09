@@ -8,6 +8,7 @@ public abstract class SpecializedBlock implements Block, Display {
     public SpecializedBlock() {
         backgroundColor = "White";
         status = 0;
+        textColor = null;
     }
 
     public String get_background_color() {
@@ -16,6 +17,10 @@ public abstract class SpecializedBlock implements Block, Display {
 
     public int get_status() {
         return status;
+    }
+
+    public String get_text_color() {
+        return textColor;
     }
 
     abstract public String to_display();

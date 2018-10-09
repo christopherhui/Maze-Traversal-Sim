@@ -3,6 +3,7 @@ package blocks;
 public class Traversed extends SpecializedBlock {
 
     public Traversed() {
+        super();
         backgroundColor = "Grey";
         status = 1;
     }
