@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.IllegalCharacterException;
 import model.ListofMazes;
 import model.MazeMap;
 import model.Status;
@@ -9,6 +10,7 @@ import java.util.Scanner;
 public class MazeEvents {
     private Scanner keys;
     private MazeMap currMaze;
+    private int currMazeNum;
 
     public MazeEvents() {
         this.keys = new Scanner(System.in);
@@ -42,7 +44,14 @@ public class MazeEvents {
                 run_status_two(key, lom, st);
             }
             else if(st.get_status() == 3) {
-                run_status_three(key, st);
+                run_status_three(key, lom, st);
+            }
+            else if(st.get_status() == 4) {
+                try {
+                    run_status_four(key, st);
+                } catch (IllegalCharacterException e) {
+                    System.out.println("Incorrect character found, please try again.");
+                }
             }
         }
     }
@@ -126,6 +135,7 @@ public class MazeEvents {
                 }
                 else {
                     set_curr_maze(lom.get_maze(num-1));
+                    set_curr_maze_num(num-1);
                     st.change_status(3);
                     System.out.println("You have selected maze " + num);
                     maze_options_msg();
@@ -140,9 +150,10 @@ public class MazeEvents {
         }
     }
 
-    public void run_status_three(String key, Status st) {
+    public void run_status_three(String key, ListofMazes lom, Status st) {
         if (key.equals("back")) {
             st.change_status(0);
+            lom.replace_maze(get_curr_maze_num(), get_curr_maze());
             System.out.println("Going back to Main Menu...");
             main_menu();
         }
@@ -156,14 +167,39 @@ public class MazeEvents {
                         maze_options_msg();
                         break;
                     case 2:
+                        maze_edit_msg();
+                        st.change_status(4);
                         break;
                     case 3:
+                        // TODO: Finish this method
                         break;
                     default:
                         System.out.println("Incorrect command, please try again.");
                 }
             }
             catch(Exception e) {
+                System.out.println("Incorrect command, please try again.");
+            }
+        }
+    }
+
+    public void run_status_four(String key, Status st) throws IllegalCharacterException {
+        if (key.equals("back")) {
+            st.change_status(3);
+            System.out.println("Going back to Maze...");
+            maze_options_msg();
+        }
+        else {
+            try {
+                String[] xyTuple = key.split(",");
+                String let = xyTuple[0];
+                int w = Integer.parseInt(xyTuple[1]);
+                int h = Integer.parseInt(xyTuple[2]);
+                currMaze.changeBlock(w, h, let);
+                System.out.println("Successfully added. You may keep adding or go back.");
+            } catch (NumberFormatException e) {
+                System.out.println("Incorrect command, please try again.");
+            } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Incorrect command, please try again.");
             }
         }
@@ -188,12 +224,25 @@ public class MazeEvents {
         System.out.println("Press 1 to view selected maze. Press 2 to edit the maze. Press 3 to delete the maze.");
     }
 
+    private void maze_edit_msg() {
+        System.out.println("Valid characters: O- Empty, W- Wall, S- Start, E- End");
+        System.out.println("Change your maze dimensions using: Character,w,h");
+    }
+
     private void num_mazes_avail(ListofMazes lom) {
         int i = 1;
         for (MazeMap m : lom.get_mazes()) {
             System.out.print(Integer.toString(i) + ": " + m.get_h() + " x " + m.get_w() + " matrix" + " ");
             i++;
         }
+    }
+
+    public int get_curr_maze_num() {
+        return currMazeNum;
+    }
+
+    public void set_curr_maze_num(int i) {
+        currMazeNum = i;
     }
 
     public MazeMap get_curr_maze() {

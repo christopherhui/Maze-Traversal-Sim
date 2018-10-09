@@ -49,4 +49,8 @@ public class ListofMazes {
             System.out.println(maze.get_maze());
         }
     }
+
+    public void replace_maze(int i, MazeMap m) {
+        mazeMaps.set(i, m);
+    }
 }

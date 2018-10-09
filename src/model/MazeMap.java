@@ -1,6 +1,7 @@
 package model;
 
 import blocks.*;
+import exceptions.IllegalCharacterException;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class MazeMap {
 
     // REQUIRES: Must be a maze from save state, must be larger than 1, and is a valid block type
     // EFFECTS: Recreates a w*h size adjacency matrix with respective blocks
-    public MazeMap(String m) {
+    public MazeMap(String m) throws IllegalCharacterException {
         String[] mazeRows = m.split("-");
         this.mazeWLength = mazeRows[0].length();
         this.mazeHLength = mazeRows.length;
@@ -80,13 +81,13 @@ public class MazeMap {
     // REQUIRES: w and h must be within the bounds of MazeMap and must be a valid block type
     // MODIFIES: this
     // EFFECTS: changes the maze with a type of block at w,h
-    public void changeBlock(int w, int h, String s) {
+    public void changeBlock(int w, int h, String s) throws IllegalCharacterException {
         maze[w][h] = block_converter(s);
     }
 
     // REQUIRES: must be a valid block type
     // EFFECTS: Changes a String to a Block object representing a block in a maze
-    private SpecializedBlock block_converter(String s) {
+    private SpecializedBlock block_converter(String s) throws IllegalCharacterException {
         switch(s) {
             case "O":
                 return new EmptySpace();
@@ -101,6 +102,6 @@ public class MazeMap {
             case "W":
                 return new Wall();
         }
-        return new EmptySpace();
+        throw new IllegalCharacterException();
     }
 }
