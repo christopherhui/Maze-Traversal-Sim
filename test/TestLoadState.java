@@ -28,6 +28,6 @@ public class TestLoadState {
     @Test
     public void failed_maze() {
         load.load(lom);
-        assertEquals(lom.get_num_mazes(), 2);
+        assertEquals(lom.get_num_mazes(), 3);
     }
 }

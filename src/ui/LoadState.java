@@ -19,9 +19,13 @@ public class LoadState {
                 try {
                     MazeMap maze = new MazeMap(line);
                     lom.add_maze(maze);
+                    System.out.println("Maze successfully added.");
                 }
                 catch (IllegalCharacterException e) {
                     System.out.println("An unexpected character was found, maze unsuccessfully added.");
+                }
+                catch (CannotConvertException e) {
+                    System.out.println("The maze could not be converted, maze unsuccessfully added.");
                 }
             }
         }

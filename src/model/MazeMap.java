@@ -1,7 +1,11 @@
 package model;
 
 import blocks.*;
+import exceptions.CannotConvertException;
 import exceptions.IllegalCharacterException;
+import exceptions.LargerLengthException;
+import exceptions.ShorterLengthException;
+import sun.plugin.javascript.navig4.LayerArray;
 
 import java.util.List;
 
@@ -27,15 +31,25 @@ public class MazeMap {
 
     // REQUIRES: Must be a maze from save state, must be larger than 1, and is a valid block type
     // EFFECTS: Recreates a w*h size adjacency matrix with respective blocks
-    public MazeMap(String m) throws IllegalCharacterException {
+    public MazeMap(String m) throws IllegalCharacterException, ShorterLengthException, LargerLengthException {
         String[] mazeRows = m.split("-");
         this.mazeWLength = mazeRows[0].length();
         this.mazeHLength = mazeRows.length;
         this.maze = new SpecializedBlock[mazeHLength][mazeWLength];
 
         for (int i = 0; i < mazeHLength; i++) {
-            for (int j = 0; j < mazeWLength; j++) {
-                maze[i][j] = block_converter(Character.toString(mazeRows[i].charAt(j)));
+            if (mazeRows[i].length() > mazeWLength) {
+                System.out.println("\nMaze is longer than expected.");
+                throw new LargerLengthException();
+            }
+            else if(mazeRows[i].length() < mazeWLength) {
+                System.out.println("\nMaze is shorter than expected.");
+                throw new ShorterLengthException();
+            }
+            else {
+                for (int j = 0; j < mazeWLength; j++) {
+                    maze[i][j] = block_converter(Character.toString(mazeRows[i].charAt(j)));
+                }
             }
         }
     }
