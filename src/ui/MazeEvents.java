@@ -227,7 +227,7 @@ public class MazeEvents {
 
     private void maze_edit_msg() {
         System.out.println("Valid characters: O- Empty, W- Wall, S- Start, E- End");
-        System.out.println("Change your maze dimensions using: Character,w,h");
+        System.out.println("Change your maze dimensions using: Character,h,w");
     }
 
     private void num_mazes_avail(RectangularMazes lom) {
