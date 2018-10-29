@@ -1,20 +1,20 @@
+import model.RectangularMazes;
 import ui.MazeEvents;
 import model.Status;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import model.ListofMazes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestMazeEvents {
     private MazeEvents me;
-    private ListofMazes lom;
+    private RectangularMazes lom;
     private Status s;
 
     @BeforeEach
     public void beforeTest() {
         me = new MazeEvents();
-        lom = new ListofMazes();
+        lom = new RectangularMazes();
         s = new Status();
     }
 

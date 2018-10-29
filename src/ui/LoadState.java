@@ -2,7 +2,7 @@ package ui;
 
 import exceptions.CannotConvertException;
 import exceptions.IllegalCharacterException;
-import model.ListofMazes;
+import model.RectangularMazes;
 import model.MazeMap;
 
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class LoadState {
 
-    public void load(ListofMazes lom) {
+    public void load(RectangularMazes lom) {
         try {
             List<String> lines = Files.readAllLines(Paths.get("savefile.txt"));
             for (String line : lines) {

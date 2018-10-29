@@ -1,19 +1,20 @@
 package ui;
 
-import model.ListofMazes;
+import model.RectangularMazes;
 import model.MazeMap;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 public class SaveState {
 
-    // REQUIRES: ListofMazes is non-empty
+    // REQUIRES: RectangularMazes is non-empty
     // EFFECTS: saves maze implementation into a output-file
-    public void save(ListofMazes lom) throws IOException {
+    public void save(RectangularMazes lom) throws IOException {
         PrintWriter writer = new PrintWriter("savefile.txt","UTF-8");
-        for (MazeMap m : lom.get_mazes()) {
-            writer.println(save_maze(m));
+        for (Map.Entry<Integer, MazeMap> entry : lom.get_mazes().entrySet()) {
+            writer.println(save_maze(entry.getValue()));
         }
         writer.close();
     }

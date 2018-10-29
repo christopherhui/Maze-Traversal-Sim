@@ -1,18 +1,20 @@
 package model;
 
 import blocks.*;
-import exceptions.CannotConvertException;
 import exceptions.IllegalCharacterException;
 import exceptions.LargerLengthException;
 import exceptions.ShorterLengthException;
-import sun.plugin.javascript.navig4.LayerArray;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class MazeMap {
     private int mazeHLength;
     private int mazeWLength;
     private SpecializedBlock[][] maze;
+    private List<RectangularMazes> listOfRectangularMazes;
 
     // TODO: change to different data structure
     // REQUIRES: Size of w and size of h is larger than 1
@@ -20,6 +22,7 @@ public class MazeMap {
     public MazeMap(int w, int h) {
         this.mazeWLength = w;
         this.mazeHLength = h;
+        this.listOfRectangularMazes = new ArrayList<>();
         this.maze = new SpecializedBlock[h][w];
 
         for (int i = 0; i < mazeHLength; i++) {
@@ -74,6 +77,13 @@ public class MazeMap {
         return maze;
     }
 
+    public void add_list_of_rectangular_mazes(RectangularMazes rms) {
+        if (!listOfRectangularMazes.contains(rms)) {
+            listOfRectangularMazes.add(rms);
+            rms.add_maze(this);
+        }
+    }
+
     // EFFECTS: prints a w,h matrix representing the maze
     @Override
     public String toString() {
@@ -117,5 +127,22 @@ public class MazeMap {
                 return new Wall();
         }
         throw new IllegalCharacterException();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MazeMap)) return false;
+        MazeMap mazeMap = (MazeMap) o;
+        return mazeHLength == mazeMap.mazeHLength &&
+                mazeWLength == mazeMap.mazeWLength &&
+                Arrays.equals(maze, mazeMap.maze);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(mazeHLength, mazeWLength);
+        result = 31 * result + Arrays.hashCode(maze);
+        return result;
     }
 }

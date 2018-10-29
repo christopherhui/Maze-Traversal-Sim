@@ -1,20 +1,18 @@
-import model.ListofMazes;
+import model.RectangularMazes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.LoadState;
 
-import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestLoadState {
-    ListofMazes lom;
+    RectangularMazes lom;
     LoadState load;
 
     @BeforeEach
     public void start_before() {
         load = new LoadState();
-        lom = new ListofMazes();
+        lom = new RectangularMazes();
     }
 
     // Only works if save-file matches load state!

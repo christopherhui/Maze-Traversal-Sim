@@ -1,4 +1,4 @@
-import model.ListofMazes;
+import model.RectangularMazes;
 import model.MazeMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,12 +8,12 @@ import java.io.IOException;
 
 public class TestSaveState {
     SaveState st;
-    ListofMazes lom;
+    RectangularMazes lom;
 
     @BeforeEach
     public void start_before() {
         st = new SaveState();
-        lom = new ListofMazes();
+        lom = new RectangularMazes();
     }
 
     @Test

@@ -1,10 +1,11 @@
 package ui;
 
 import exceptions.IllegalCharacterException;
-import model.ListofMazes;
+import model.RectangularMazes;
 import model.MazeMap;
 import model.Status;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class MazeEvents {
@@ -21,7 +22,7 @@ public class MazeEvents {
     // EFFECTS: Runs the main model for the creation, edit, and deletion of mazes
     public void handle_key() {
 
-        ListofMazes lom = new ListofMazes();
+        RectangularMazes lom = new RectangularMazes();
         Status st = new Status();
 
         main_menu();
@@ -59,7 +60,7 @@ public class MazeEvents {
     // REQUIRES: Is a String input
     // MODIFIES: this, lom (in the future), st
     // EFFECTS: Runs the creation, access of a maze and termination of program
-    public void run_status_zero(String key, ListofMazes lom, Status st) {
+    public void run_status_zero(String key, RectangularMazes lom, Status st) {
         try {
             int cmd = Integer.parseInt(key);
             switch (cmd) {
@@ -93,7 +94,7 @@ public class MazeEvents {
     // REQUIRES: Is a String input
     // MODIFIES: this, lom, st
     // EFFECTS: Creates a maze with w,h dimensions, and must have values greater than 1
-    public void run_status_one(String key, ListofMazes lom, Status st) {
+    public void run_status_one(String key, RectangularMazes lom, Status st) {
         if (key.equals("back")) {
             st.change_status(0);
             System.out.println("Going back to Main Menu...");
@@ -121,7 +122,7 @@ public class MazeEvents {
         }
     }
 
-    public void run_status_two(String key, ListofMazes lom, Status st) {
+    public void run_status_two(String key, RectangularMazes lom, Status st) {
         if (key.equals("back")) {
             st.change_status(0);
             System.out.println("Going back to Main Menu...");
@@ -150,7 +151,7 @@ public class MazeEvents {
         }
     }
 
-    public void run_status_three(String key, ListofMazes lom, Status st) {
+    public void run_status_three(String key, RectangularMazes lom, Status st) {
         if (key.equals("back")) {
             st.change_status(0);
             lom.replace_maze(get_curr_maze_num(), get_curr_maze());
@@ -229,11 +230,9 @@ public class MazeEvents {
         System.out.println("Change your maze dimensions using: Character,w,h");
     }
 
-    private void num_mazes_avail(ListofMazes lom) {
-        int i = 1;
-        for (MazeMap m : lom.get_mazes()) {
-            System.out.print(Integer.toString(i) + ": " + m.get_h() + " x " + m.get_w() + " matrix" + " ");
-            i++;
+    private void num_mazes_avail(RectangularMazes lom) {
+        for (Map.Entry<Integer, MazeMap> entry : lom.get_mazes().entrySet()) {
+            System.out.print(entry.getKey()+1 + ": " + entry.getValue().get_h() + " x " + entry.getValue().get_w() + " matrix" + " ");
         }
     }
 

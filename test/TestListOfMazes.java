@@ -1,4 +1,4 @@
-import model.ListofMazes;
+import model.RectangularMazes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import model.MazeMap;
@@ -7,11 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TestListOfMazes {
-    private ListofMazes lom;
+    private RectangularMazes lom;
 
     @BeforeEach
     public void create_before() {
-        lom = new ListofMazes();
+        lom = new RectangularMazes();
     }
 
     @Test
