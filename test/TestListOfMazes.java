@@ -23,7 +23,7 @@ public class TestListOfMazes {
         lom.add_maze(maze1);
         lom.add_maze(maze2);
         assertEquals(2, lom.get_num_mazes());
-        lom.remove_maze(1);
+        lom.remove_maze(lom.get_maze(1), 1);
         assertEquals(1, lom.get_num_mazes());
     }
 }

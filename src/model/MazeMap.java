@@ -84,6 +84,14 @@ public class MazeMap {
         }
     }
 
+    // TODO: questionable code, refer to RectangularMazes
+    public void remove_list_of_rectangular_mazes(RectangularMazes rms, int x) {
+        if (listOfRectangularMazes.contains(rms)) {
+            listOfRectangularMazes.remove(x);
+            rms.remove_maze(this, x);
+        }
+    }
+
     // EFFECTS: prints a w,h matrix representing the maze
     @Override
     public String toString() {
