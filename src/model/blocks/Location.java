@@ -1,4 +1,4 @@
-package blocks;
+package model.blocks;
 
 public class Location extends SpecializedBlock {
 

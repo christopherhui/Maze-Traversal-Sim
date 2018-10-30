@@ -1,5 +1,5 @@
-import blocks.Display;
-import blocks.Wall;
+import model.blocks.Display;
+import model.blocks.Wall;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

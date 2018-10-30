@@ -1,4 +1,4 @@
-package blocks;
+package model.blocks;
 
 public interface Block {
     // EFFECTS: gets the background color of the block

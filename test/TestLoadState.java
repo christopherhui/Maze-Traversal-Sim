@@ -1,7 +1,7 @@
 import model.RectangularMazes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.LoadState;
+import ui.saveload.LoadState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,4 +1,4 @@
-package ui;
+package ui.saveload;
 
 import model.RectangularMazes;
 import model.MazeMap;

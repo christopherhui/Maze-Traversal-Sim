@@ -1,35 +1,39 @@
 import model.RectangularMazes;
 import ui.MazeEvents;
-import model.Status;
+import ui.statuses.CurrentStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestMazeEvents {
     private MazeEvents me;
     private RectangularMazes lom;
-    private Status s;
+    private CurrentStatus s;
+    private Scanner keys;
 
     @BeforeEach
     public void beforeTest() {
         me = new MazeEvents();
         lom = new RectangularMazes();
-        s = new Status();
+        s = new CurrentStatus();
+        keys = new Scanner(System.in);
     }
 
     @Test
     public void testStatusZero() {
         // Testing if 2 case crashes, can't test 3 because sys.exit()
-        me.run_status_zero("2", lom, s);
+        me.run_status_zero(keys,"2", lom, s);
 
         // Else cases if wrong command is given
-        me.run_status_zero("4", lom, s);
-        me.run_status_zero("dont crash please", lom, s);
+        me.run_status_zero(keys, "4", lom, s);
+        me.run_status_zero(keys, "dont crash please", lom, s);
         assertEquals(0, s.get_status());
 
         // Inputting 1 should change status to 1
-        me.run_status_zero("1", lom, s);
+        me.run_status_zero(keys,"1", lom, s);
         assertEquals(1, s.get_status());
     }
 

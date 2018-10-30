@@ -1,4 +1,4 @@
-package blocks;
+package model.blocks;
 
 public class Start extends SpecializedBlock{
     private boolean found;

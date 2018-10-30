@@ -1,5 +1,5 @@
-import blocks.Block;
-import blocks.EmptySpace;
+import model.blocks.Block;
+import model.blocks.EmptySpace;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

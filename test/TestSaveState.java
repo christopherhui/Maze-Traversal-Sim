@@ -2,7 +2,7 @@ import model.RectangularMazes;
 import model.MazeMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.SaveState;
+import ui.saveload.SaveState;
 
 import java.io.IOException;
 

@@ -1,16 +1,16 @@
-import model.Status;
+import ui.statuses.CurrentStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestStatus {
+public class TestCurrentStatus {
     private int status;
-    private Status s;
+    private CurrentStatus s;
 
     @BeforeEach
     public void createStatus() {
-        s = new Status();
+        s = new CurrentStatus();
     }
 
     @Test

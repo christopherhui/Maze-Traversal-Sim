@@ -1,7 +1,7 @@
-import blocks.EmptySpace;
-import blocks.End;
-import blocks.Location;
-import blocks.SpecializedBlock;
+import model.blocks.EmptySpace;
+import model.blocks.End;
+import model.blocks.Location;
+import model.blocks.SpecializedBlock;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

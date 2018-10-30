@@ -1,6 +1,6 @@
 package model;
 
-import blocks.*;
+import model.blocks.*;
 import exceptions.IllegalCharacterException;
 import exceptions.LargerLengthException;
 import exceptions.ShorterLengthException;
@@ -33,7 +33,7 @@ public class MazeMap {
     }
 
     // REQUIRES: Must be a maze from save state, must be larger than 1, and is a valid block type
-    // EFFECTS: Recreates a w*h size adjacency matrix with respective blocks
+    // EFFECTS: Recreates a w*h size adjacency matrix with respective model.blocks
     public MazeMap(String m) throws IllegalCharacterException, ShorterLengthException, LargerLengthException {
         String[] mazeRows = m.split("-");
         this.mazeWLength = mazeRows[0].length();

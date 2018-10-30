@@ -1,10 +1,10 @@
-package model;
+package ui.statuses;
 
-public class Status {
+public class CurrentStatus {
     private int status;
 
-    // EFFECTS: Status is initially at 0
-    public Status() {
+    // EFFECTS: CurrentStatus is initially at 0
+    public CurrentStatus() {
         this.status = 0;
     }
 
