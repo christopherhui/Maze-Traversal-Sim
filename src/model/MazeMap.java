@@ -16,7 +16,6 @@ public class MazeMap {
     private SpecializedBlock[][] maze;
     private List<RectangularMazes> listOfRectangularMazes;
 
-    // TODO: change to different data structure
     // REQUIRES: Size of w and size of h is larger than 1
     // EFFECTS: Creates an empty w*h size adjacency matrix
     public MazeMap(int w, int h) {
@@ -87,7 +86,7 @@ public class MazeMap {
     // TODO: questionable code, refer to RectangularMazes
     public void remove_list_of_rectangular_mazes(RectangularMazes rms, int x) {
         if (listOfRectangularMazes.contains(rms)) {
-            listOfRectangularMazes.remove(x);
+            listOfRectangularMazes.remove(x-1);
             rms.remove_maze(this, x);
         }
     }

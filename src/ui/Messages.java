@@ -6,23 +6,23 @@ import model.RectangularMazes;
 import java.util.Map;
 
 public class Messages {
+    private final String LINES = "----------------------------------------";
 
     public void main_menu() {
-        System.out.println("----------------------------------------" +
-                " Main Menu ----------------------------------------");
+        System.out.println(LINES +
+                " Main Menu " + LINES);
         System.out.println("Press 1 to create a maze. Press 2 to open a preexisting maze. " +
                 "Press 3 to close the application.");
     }
 
     public void maze_create_msg() {
-        System.out.println("--------------" +
-                " Maze Creation --------------");
+        System.out.println(LINES +
+                " Maze Creation " + LINES);
         System.out.println("Enter the dimensions of your maze by using: w,h");
     }
 
     public void maze_options_msg() {
-        System.out.println("---------------------------------------- Maze Editor " +
-                "----------------------------------------");
+        System.out.println(LINES + " Maze Editor " + LINES);
         System.out.println("Press 1 to view selected maze. Press 2 to edit the maze. Press 3 to delete the maze.");
     }
 
