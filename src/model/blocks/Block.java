@@ -8,5 +8,5 @@ public interface Block {
     int get_status();
 
     // EFFECTS: returns the string version of object
-    String to_display();
+    String toString();
 }

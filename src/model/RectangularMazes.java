@@ -27,7 +27,6 @@ public class RectangularMazes {
     public void add_maze(MazeMap mazeMap) {
         if (!mazeMaps.containsValue(mazeMap)) {
             mazeMaps.put(mazeMaps.size(), mazeMap);
-            mazeMap.add_list_of_rectangular_mazes(this);
         }
     }
 
@@ -39,11 +38,9 @@ public class RectangularMazes {
     // REQUIRES: x must be an index between 0 and the length of the list - 1
     // MODIFIES: this
     // EFFFECTS: Removes a maze from the list of mazes at index x
-    public void remove_maze(MazeMap maze, int x) {
+    public void remove_maze(int x) {
         if (mazeMaps.containsKey(x)) {
-            MazeMap m = get_maze(x);
             mazeMaps.remove(x);
-            m.remove_list_of_rectangular_mazes(this, x);  //If it is removed, does this even work?
         }
     }
 

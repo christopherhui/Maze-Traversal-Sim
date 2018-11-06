@@ -7,7 +7,7 @@ public class EmptySpace extends SpecializedBlock {
     }
 
     @Override
-    public String to_display() {
+    public String toString() {
         return "O";
     }
 }

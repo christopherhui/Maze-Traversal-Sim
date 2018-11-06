@@ -5,23 +5,19 @@ import exceptions.IllegalCharacterException;
 import exceptions.LargerLengthException;
 import exceptions.ShorterLengthException;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class MazeMap {
     private int mazeHLength;
     private int mazeWLength;
     private SpecializedBlock[][] maze;
-    private List<RectangularMazes> listOfRectangularMazes;
 
     // REQUIRES: Size of w and size of h is larger than 1
     // EFFECTS: Creates an empty w*h size adjacency matrix
     public MazeMap(int w, int h) {
         this.mazeWLength = w;
         this.mazeHLength = h;
-        this.listOfRectangularMazes = new ArrayList<>();
         this.maze = new SpecializedBlock[h][w];
 
         for (int i = 0; i < mazeHLength; i++) {
@@ -76,36 +72,21 @@ public class MazeMap {
         return maze;
     }
 
-    public void add_list_of_rectangular_mazes(RectangularMazes rms) {
-        if (!listOfRectangularMazes.contains(rms)) {
-            listOfRectangularMazes.add(rms);
-            rms.add_maze(this);
-        }
-    }
-
-    // TODO: questionable code, refer to RectangularMazes
-    public void remove_list_of_rectangular_mazes(RectangularMazes rms, int x) {
-        if (listOfRectangularMazes.contains(rms)) {
-            listOfRectangularMazes.remove(x-1);
-            rms.remove_maze(this, x);
-        }
-    }
-
     // EFFECTS: prints a w,h matrix representing the maze
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
         for (int i = 0; i < mazeHLength-1; i++) {
             for (int j = 0; j < mazeWLength-1; j++) {
-                s.append(maze[i][j].to_display() + " ");
+                s.append(maze[i][j].toString() + " ");
             }
-            s.append(maze[i][mazeWLength-1].to_display());
+            s.append(maze[i][mazeWLength-1].toString());
             s.append("\n");
         }
         for (int j = 0; j < mazeWLength-1; j++) {
-            s.append(maze[mazeHLength-1][j].to_display() + " ");
+            s.append(maze[mazeHLength-1][j].toString() + " ");
         }
-        s.append(maze[mazeHLength-1][mazeWLength-1].to_display());
+        s.append(maze[mazeHLength-1][mazeWLength-1].toString());
         return s.toString();
     }
 

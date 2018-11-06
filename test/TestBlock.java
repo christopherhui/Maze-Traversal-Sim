@@ -11,6 +11,6 @@ public class TestBlock {
         Block es = new EmptySpace();
         assertEquals(0, es.get_status());
         assertEquals("White", es.get_background_color());
-        assertEquals("O", es.to_display());
+        assertEquals("O", es.toString());
     }
 }

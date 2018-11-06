@@ -23,15 +23,15 @@ public class SaveState {
         StringBuilder s = new StringBuilder();
         for (int i = 0; i < maze.get_h()-1; i++) {
             for (int j = 0; j < maze.get_w()-1; j++) {
-                s.append(maze.get_maze()[i][j].to_display());
+                s.append(maze.get_maze()[i][j].toString());
             }
-            s.append(maze.get_maze()[i][maze.get_w()-1].to_display());
+            s.append(maze.get_maze()[i][maze.get_w()-1].toString());
             s.append("-");
         }
         for (int j = 0; j < maze.get_w()-1; j++) {
-            s.append(maze.get_maze()[maze.get_h()-1][j].to_display());
+            s.append(maze.get_maze()[maze.get_h()-1][j].toString());
         }
-        s.append(maze.get_maze()[maze.get_h()-1][maze.get_w()-1].to_display());
+        s.append(maze.get_maze()[maze.get_h()-1][maze.get_w()-1].toString());
         return s.toString();
     }
 }

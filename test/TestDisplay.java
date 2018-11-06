@@ -9,6 +9,6 @@ public class TestDisplay {
     @Test
     public void testExampleWall() {
         Display w = new Wall();
-        assertEquals("W", w.to_display());
+        assertEquals("W", w.toString());
     }
 }

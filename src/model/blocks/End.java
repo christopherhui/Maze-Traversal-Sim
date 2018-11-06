@@ -8,7 +8,7 @@ public class End extends SpecializedBlock {
     }
 
     @Override
-    public String to_display() {
+    public String toString() {
         return "E";
     }
 }
