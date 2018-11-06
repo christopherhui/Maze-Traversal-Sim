@@ -9,13 +9,13 @@ public abstract class SpecializedBlock implements Block, Display {
     protected String backgroundColor;
     protected int status;
     protected String textColor;
-    protected List<MazeMap> mazesBelongTo;
+    protected String text;
 
     public SpecializedBlock() {
         backgroundColor = "White";
         status = 0;
         textColor = null;
-        mazesBelongTo = new ArrayList<>();
+        text = null;
     }
 
     public String get_background_color() {

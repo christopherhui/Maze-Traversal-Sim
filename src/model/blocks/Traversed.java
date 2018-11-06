@@ -6,10 +6,11 @@ public class Traversed extends SpecializedBlock {
         super();
         backgroundColor = "Grey";
         status = 1;
+        text = "V";
     }
 
     @Override
     public String toString() {
-        return "V";
+        return text;
     }
 }

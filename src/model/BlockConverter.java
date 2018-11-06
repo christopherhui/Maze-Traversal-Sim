@@ -5,9 +5,11 @@ import model.blocks.*;
 
 public class BlockConverter {
     MazeMap mazeMap;
+    AllBlocks allBlocks;
 
     public BlockConverter(MazeMap mazeMap) {
         this.mazeMap = mazeMap;
+        this.allBlocks = new AllBlocks();
     }
 
     // EFFECTS: prints a w,h matrix representing the maze
@@ -31,19 +33,10 @@ public class BlockConverter {
     // REQUIRES: must be a valid block type
     // EFFECTS: Changes a String to a Block object representing a block in a maze
     public SpecializedBlock block_converter(String s) throws IllegalCharacterException {
-        switch(s) {
-            case "O":
-                return new EmptySpace();
-            case "E":
-                return new End();
-            case "F":
-                return new Location();
-            case "S":
-                return new Start();
-            case "V":
-                return new Traversed();
-            case "W":
-                return new Wall();
+        for (SpecializedBlock block : allBlocks.getSpecializedBlocks()) {
+            if (block.toString().equals(s)) {
+                return block;
+            }
         }
         throw new IllegalCharacterException();
     }
