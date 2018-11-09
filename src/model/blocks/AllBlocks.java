@@ -22,6 +22,10 @@ public class AllBlocks extends SpecializedBlock {
 
     @Override
     public String toString() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        for (SpecializedBlock block : specializedBlocks) {
+            sb.append(block + " ");
+        }
+        return sb.toString();
     }
 }

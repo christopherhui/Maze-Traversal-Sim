@@ -3,13 +3,18 @@ package model;
 import exceptions.IllegalCharacterException;
 import model.blocks.*;
 
+import java.util.Map;
+
 public class BlockConverter {
     MazeMap mazeMap;
     AllBlocks allBlocks;
 
+    Map<String, Class> t;
+
     public BlockConverter(MazeMap mazeMap) {
         this.mazeMap = mazeMap;
         this.allBlocks = new AllBlocks();
+        set_up();
     }
 
     // EFFECTS: prints a w,h matrix representing the maze
@@ -35,9 +40,30 @@ public class BlockConverter {
     public SpecializedBlock block_converter(String s) throws IllegalCharacterException {
         for (SpecializedBlock block : allBlocks.getSpecializedBlocks()) {
             if (block.toString().equals(s)) {
-                return block;
+                try {
+                    Class c = block.getClass();
+                    return (SpecializedBlock) c.newInstance();
+                } catch (Exception e) {
+
+                }
             }
         }
         throw new IllegalCharacterException();
+    }
+
+    public void set_up() {
+        EmptySpace block1 = new EmptySpace();
+        End block2 = new End();
+        Location block3 = new Location();
+        Start block4 = new Start();
+        Traversed block5 = new Traversed();
+        Wall block6 = new Wall();
+
+        allBlocks.addBlock(block1);
+        allBlocks.addBlock(block2);
+        allBlocks.addBlock(block3);
+        allBlocks.addBlock(block4);
+        allBlocks.addBlock(block5);
+        allBlocks.addBlock(block6);
     }
 }

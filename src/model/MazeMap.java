@@ -36,6 +36,7 @@ public class MazeMap {
         this.mazeWLength = mazeRows[0].length();
         this.mazeHLength = mazeRows.length;
         this.maze = new SpecializedBlock[mazeHLength][mazeWLength];
+        this.bc = new BlockConverter(this);
 
         for (int i = 0; i < mazeHLength; i++) {
             if (mazeRows[i].length() > mazeWLength) {
