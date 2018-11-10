@@ -2,10 +2,8 @@ package ui;
 
 import exceptions.IllegalCharacterException;
 import model.RectangularMazes;
-import model.MazeMap;
 import ui.statuses.*;
 
-import java.util.Map;
 import java.util.Scanner;
 
 public class MazeEvents {

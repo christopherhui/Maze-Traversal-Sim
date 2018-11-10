@@ -8,11 +8,12 @@ import exceptions.ShorterLengthException;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class MazeMap {
+public class MazeMap extends SpecializedBlock {
     private int mazeHLength;
     private int mazeWLength;
     private SpecializedBlock[][] maze;
     private BlockConverter bc;
+    private BlockFactory bf;
 
     // REQUIRES: Size of w and size of h is larger than 1
     // EFFECTS: Creates an empty w*h size adjacency matrix
@@ -21,10 +22,11 @@ public class MazeMap {
         this.mazeHLength = h;
         this.maze = new SpecializedBlock[h][w];
         this.bc = new BlockConverter(this);
+        this.bf = new BlockFactory();
 
         for (int i = 0; i < mazeHLength; i++) {
             for (int j = 0; j < mazeWLength; j++) {
-                maze[i][j] = new EmptySpace();
+                maze[i][j] = bf.createEmptyBlock();
             }
         }
     }
@@ -91,7 +93,7 @@ public class MazeMap {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof MazeMap)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         MazeMap mazeMap = (MazeMap) o;
         return mazeHLength == mazeMap.mazeHLength &&
                 mazeWLength == mazeMap.mazeWLength &&
@@ -100,6 +102,7 @@ public class MazeMap {
 
     @Override
     public int hashCode() {
+
         int result = Objects.hash(mazeHLength, mazeWLength);
         result = 31 * result + Arrays.hashCode(maze);
         return result;
