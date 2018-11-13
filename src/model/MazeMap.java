@@ -27,7 +27,7 @@ public class MazeMap extends SpecializedBlock {
         this.bc = new BlockConverter(this);
         this.bf = new BlockFactory();
         this.start = "0,0";
-        this.end = Integer.toString(mazeHLength) + "," + Integer.toString(mazeWLength);
+        this.end = Integer.toString(mazeHLength-1) + "," + Integer.toString(mazeWLength-1); // Height, Width
 
         for (int i = 0; i < mazeHLength; i++) {
             for (int j = 0; j < mazeWLength; j++) {
@@ -108,8 +108,28 @@ public class MazeMap extends SpecializedBlock {
     // REQUIRES: w and h must be within the bounds of MazeMap and must be a valid block type
     // MODIFIES: this
     // EFFECTS: changes the maze with a type of block at w,h
-    public void changeBlock(int w, int h, String s) throws IllegalCharacterException {
-        maze[w][h] = bc.block_converter(s);
+    public void changeBlock(int w, int h, String s) throws IllegalCharacterException, StartEndException {
+        String[] dimensionsStart = start.split(",");
+        String[] dimensionsEnd = end.split(",");
+        if (s.equals("S")) {
+            maze[Integer.parseInt(dimensionsStart[0])][Integer.parseInt(dimensionsStart[1])] = bc.block_converter("O");
+            maze[w][h] = bc.block_converter("S");
+            start = Integer.toString(h) + "," + Integer.toString(w);
+        }
+        else if (s.equals("E")) {
+            maze[Integer.parseInt(dimensionsEnd[0])][Integer.parseInt(dimensionsEnd[1])] = bc.block_converter("O");
+            maze[w][h] = bc.block_converter("E");
+            end = Integer.toString(h) + "," + Integer.toString(w);
+        }
+        else if(w == Integer.parseInt(dimensionsStart[0]) && h == Integer.parseInt(dimensionsStart[0])) {
+            throw new StartEndException();
+        }
+        else if(w == Integer.parseInt(dimensionsEnd[1]) || h == Integer.parseInt(dimensionsEnd[1])) {
+            throw new StartEndException();
+        }
+        else {
+            maze[w][h] = bc.block_converter(s);
+        }
     }
 
     @Override
@@ -124,9 +144,13 @@ public class MazeMap extends SpecializedBlock {
 
     @Override
     public int hashCode() {
-
         int result = Objects.hash(mazeHLength, mazeWLength);
         result = 31 * result + Arrays.hashCode(maze);
         return result;
+    }
+
+    // TODO: complete this method
+    public boolean traverse() {
+        return false;
     }
 }

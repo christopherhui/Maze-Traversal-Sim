@@ -1,6 +1,7 @@
 package ui.statuses;
 
 import exceptions.IllegalCharacterException;
+import exceptions.StartEndException;
 import ui.CurrentMaze;
 import ui.Messages;
 
@@ -11,7 +12,7 @@ public class StatusFour {
         this.messages = new Messages();
     }
 
-    public void run_status_four(CurrentMaze cm, String key, CurrentStatus st) throws IllegalCharacterException {
+    public void run_status_four(CurrentMaze cm, String key, CurrentStatus st) {
         if (key.equals("back")) {
             st.change_status(3);
             System.out.println("Going back to Maze...");
@@ -28,7 +29,11 @@ public class StatusFour {
             } catch (NumberFormatException e) {
                 System.out.println("Incorrect command, please try again.");
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Incorrect command, please try again.");
+                System.out.println("Input was out of bounds of the maze, please try again.");
+            } catch (IllegalCharacterException e) {
+                System.out.println("Character was not defined, please try again.");
+            } catch (StartEndException e) {
+                System.out.println("Start/End blocks cannot be overriden, please try again.");
             }
         }
     }

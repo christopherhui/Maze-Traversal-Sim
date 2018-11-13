@@ -62,11 +62,7 @@ public class MazeEvents {
             run_status_three(cm, key, lom, st);
         }
         else if(st.get_status() == 4) {
-            try {
-                run_status_four(cm, key, st);
-            } catch (IllegalCharacterException e) {
-                System.out.println("Incorrect character found, please try again.");
-            }
+            run_status_four(cm, key, st);
         }
     }
 
@@ -92,7 +88,7 @@ public class MazeEvents {
         s3.run_status_three(cm, key, lom, st);
     }
 
-    public void run_status_four(CurrentMaze cm, String key, CurrentStatus st) throws IllegalCharacterException {
+    public void run_status_four(CurrentMaze cm, String key, CurrentStatus st) {
         s4.run_status_four(cm, key, st);
     }
 }
