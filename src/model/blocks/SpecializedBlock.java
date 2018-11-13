@@ -30,5 +30,5 @@ public abstract class SpecializedBlock implements Block, Display {
         return textColor;
     }
 
-    abstract public String toString();
+    public abstract String toString();
 }

@@ -1,6 +1,6 @@
 import ui.MazeEvents;
 
-public class MazeTraversalSim {
+public class MazeTraversalSimInput {
 
     public static void main(String[] args) {
         MazeEvents me = new MazeEvents();
