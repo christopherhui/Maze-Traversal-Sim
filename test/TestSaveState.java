@@ -1,3 +1,4 @@
+import exceptions.IllegalCharacterException;
 import model.RectangularMazes;
 import model.MazeMap;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +18,7 @@ public class TestSaveState {
     }
 
     @Test
-    public void add_maze() throws IOException {
+    public void add_maze() throws IOException, IllegalCharacterException {
         MazeMap m = new MazeMap(2,2);
         MazeMap m1 = new MazeMap(5,3);
         lom.add_maze(m);

@@ -32,8 +32,10 @@ public class Messages {
     }
 
     public void num_mazes_avail(RectangularMazes lom) {
-        for (Map.Entry<Integer, MazeMap> entry : lom.get_mazes().entrySet()) {
-            System.out.print(entry.getKey()+1 + ": " + entry.getValue().get_h() + " x " + entry.getValue().get_w() + " matrix" + " ");
+        int i = 1;
+        for (MazeMap mazeMap : lom.get_mazes()) {
+            System.out.print(i + ": " + mazeMap.get_h() + " x " + mazeMap.get_w() + " matrix" + " ");
+            i++;
         }
     }
 }

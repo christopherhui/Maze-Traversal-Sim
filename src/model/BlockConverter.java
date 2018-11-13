@@ -8,10 +8,12 @@ import java.util.Map;
 public class BlockConverter {
     MazeMap mazeMap;
     AllBlocks allBlocks;
+    BlockFactory blockFactory;
 
     public BlockConverter(MazeMap mazeMap) {
         this.mazeMap = mazeMap;
         this.allBlocks = new AllBlocks();
+        this.blockFactory = new BlockFactory();
     }
 
     // EFFECTS: prints a w,h matrix representing the maze
@@ -35,7 +37,6 @@ public class BlockConverter {
     // REQUIRES: must be a valid block type
     // EFFECTS: Changes a String to a Block object representing a block in a maze
     public SpecializedBlock block_converter(String s) throws IllegalCharacterException {
-        BlockFactory blockFactory = new BlockFactory();
         return blockFactory.makeBlock(s);
     }
 }

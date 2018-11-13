@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.StartEndException;
 import model.blocks.*;
 import exceptions.IllegalCharacterException;
 import exceptions.LargerLengthException;
@@ -14,31 +15,39 @@ public class MazeMap extends SpecializedBlock {
     private SpecializedBlock[][] maze;
     private BlockConverter bc;
     private BlockFactory bf;
+    private String start;
+    private String end;
 
-    // REQUIRES: Size of w and size of h is larger than 1
+    // REQUIRES: Size of w and size of h is larger than 1, initializes start at (0,0) and end at bottom corner.
     // EFFECTS: Creates an empty w*h size adjacency matrix
-    public MazeMap(int w, int h) {
+    public MazeMap(int w, int h) throws IllegalCharacterException {
         this.mazeWLength = w;
         this.mazeHLength = h;
         this.maze = new SpecializedBlock[h][w];
         this.bc = new BlockConverter(this);
         this.bf = new BlockFactory();
+        this.start = "0,0";
+        this.end = Integer.toString(mazeHLength) + "," + Integer.toString(mazeWLength);
 
         for (int i = 0; i < mazeHLength; i++) {
             for (int j = 0; j < mazeWLength; j++) {
                 maze[i][j] = bf.createEmptyBlock();
             }
         }
+        maze[0][0] = bf.makeBlock("S");
+        maze[mazeHLength-1][mazeWLength-1] = bf.makeBlock("E");
     }
 
     // REQUIRES: Must be a maze from save state, must be larger than 1, and is a valid block type
     // EFFECTS: Recreates a w*h size adjacency matrix with respective model.blocks
-    public MazeMap(String m) throws IllegalCharacterException, ShorterLengthException, LargerLengthException {
+    public MazeMap(String m) throws IllegalCharacterException, ShorterLengthException, LargerLengthException, StartEndException {
         String[] mazeRows = m.split("-");
         this.mazeWLength = mazeRows[0].length();
         this.mazeHLength = mazeRows.length;
         this.maze = new SpecializedBlock[mazeHLength][mazeWLength];
         this.bc = new BlockConverter(this);
+        this.start = null;
+        this.end = null;
 
         for (int i = 0; i < mazeHLength; i++) {
             if (mazeRows[i].length() > mazeWLength) {
@@ -51,9 +60,22 @@ public class MazeMap extends SpecializedBlock {
             }
             else {
                 for (int j = 0; j < mazeWLength; j++) {
+                    if (Character.toString(mazeRows[i].charAt(j)).equals("S") && start == null) {
+                        start = Integer.toString(i) + "," + Integer.toString(j);
+                    }
+                    else if (Character.toString(mazeRows[i].charAt(j)).equals("E") && end == null) {
+                        end = Integer.toString(i) + "," + Integer.toString(j);
+                    }
+                    else if (Character.toString(mazeRows[i].charAt(j)).equals("S") && start != null
+                            || Character.toString(mazeRows[i].charAt(j)).equals("E") && end != null) {
+                        throw new StartEndException();
+                    }
                     maze[i][j] = bc.block_converter(Character.toString(mazeRows[i].charAt(j)));
                 }
             }
+        }
+        if (start == null || end == null) {
+            throw new StartEndException();
         }
     }
 

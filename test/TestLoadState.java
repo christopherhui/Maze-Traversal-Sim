@@ -22,12 +22,12 @@ public class TestLoadState {
     @Test
     public void test_mazes() {
         load.load(lom);
-        assertEquals("O O\nO O", lom.get_maze(0).toString());
-        assertEquals("O O O O O\nO O O O O\nO O O O O", lom.get_maze(1).toString());
+        assertEquals("S O\nO E", lom.get_maze(0).toString());
+        assertEquals("S O O O O\nO O O O O\nO O O O E", lom.get_maze(1).toString());
         MazeMap mazeMap = lom.get_maze(0);
         try {
-            mazeMap.changeBlock(0, 0, "S");
-            assertEquals("S O\nO O", lom.get_maze(0).toString());
+            mazeMap.changeBlock(0, 0, "V");
+            assertEquals("V O\nO E", lom.get_maze(0).toString());
         }
         catch (Exception e) {
         }

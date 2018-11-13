@@ -13,8 +13,8 @@ public class SaveState {
     // EFFECTS: saves maze implementation into a output-file
     public void save(RectangularMazes lom) throws IOException {
         PrintWriter writer = new PrintWriter("savefile.txt","UTF-8");
-        for (Map.Entry<Integer, MazeMap> entry : lom.get_mazes().entrySet()) {
-            writer.println(save_maze(entry.getValue()));
+        for (MazeMap mazeMap : lom.get_mazes()) {
+            writer.println(save_maze(mazeMap));
         }
         writer.close();
     }

@@ -1,17 +1,15 @@
 package model;
-import model.MazeMap;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class RectangularMazes {
-    private Map<Integer,MazeMap> mazeMaps;
+    private List<MazeMap> mazeMaps;
 
     // EFFECTS: List has no mazes
     public RectangularMazes() {
-        mazeMaps = new HashMap<>();
+        mazeMaps = new ArrayList<>();
     }
 
     // EFFECTS: Return the number of mazes in the list
@@ -20,14 +18,12 @@ public class RectangularMazes {
     }
 
     // EFFECTS: Return the mazes in mazeMap
-    public Map<Integer, MazeMap> get_mazes() {return mazeMaps;}
+    public List<MazeMap> get_mazes() {return mazeMaps;}
 
     // MODIFIES: this
     // EFFECTS: Adds a maze to mazeMaps
     public void add_maze(MazeMap mazeMap) {
-        if (!mazeMaps.containsValue(mazeMap)) {
-            mazeMaps.put(mazeMaps.size(), mazeMap);
-        }
+        mazeMaps.add(mazeMap);
     }
 
     // REQUIRES: index is within range bounds
@@ -39,16 +35,14 @@ public class RectangularMazes {
     // MODIFIES: this
     // EFFFECTS: Removes a maze from the list of mazes at index x
     public void remove_maze(int x) {
-        if (mazeMaps.containsKey(x)) {
-            mazeMaps.remove(x);
-        }
+        mazeMaps.remove(x);
     }
 
     public void replace_maze(int i, MazeMap m) {
-        mazeMaps.put(i, m);
+        mazeMaps.set(i, m);
     }
 
     public boolean contains_maze(MazeMap m) {
-        return mazeMaps.containsValue(m);
+        return mazeMaps.contains(m);
     }
 }

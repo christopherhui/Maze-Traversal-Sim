@@ -33,7 +33,10 @@ public class StatusThree {
                         st.change_status(4);
                         break;
                     case 3:
-                        // TODO: Finish this method
+                        lom.remove_maze(cm.get_curr_maze_num());
+                        System.out.println("Maze deleted.");
+                        st.change_status(0);
+                        messages.main_menu();
                         break;
                     default:
                         System.out.println("Incorrect command, please try again.");

@@ -1,3 +1,4 @@
+import exceptions.IllegalCharacterException;
 import model.RectangularMazes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ public class TestListOfMazes {
     }
 
     @Test
-    public void test_mazes() {
+    public void test_mazes() throws IllegalCharacterException {
         assertEquals(0, lom.get_num_mazes());
         MazeMap maze1 = new MazeMap(4,3);
         MazeMap maze2 = new MazeMap(3, 5);
