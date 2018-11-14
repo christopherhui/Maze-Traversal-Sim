@@ -1,17 +1,16 @@
 package ui.saveload;
 
-import model.RectangularMazes;
+import model.ListOfMaze;
 import model.MazeMap;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 
 public class SaveState {
 
-    // REQUIRES: RectangularMazes is non-empty
+    // REQUIRES: ListOfMaze is non-empty
     // EFFECTS: saves maze implementation into a output-file
-    public void save(RectangularMazes lom) throws IOException {
+    public void save(ListOfMaze lom) throws IOException {
         PrintWriter writer = new PrintWriter("savefile.txt","UTF-8");
         for (MazeMap mazeMap : lom.get_mazes()) {
             writer.println(save_maze(mazeMap));

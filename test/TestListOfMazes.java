@@ -1,5 +1,5 @@
 import exceptions.IllegalCharacterException;
-import model.RectangularMazes;
+import model.ListOfMaze;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import model.MazeMap;
@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TestListOfMazes {
-    private RectangularMazes lom;
+    private ListOfMaze lom;
 
     @BeforeEach
     public void create_before() {
-        lom = new RectangularMazes();
+        lom = new ListOfMaze();
     }
 
     @Test

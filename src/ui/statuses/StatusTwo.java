@@ -1,6 +1,6 @@
 package ui.statuses;
 
-import model.RectangularMazes;
+import model.ListOfMaze;
 import ui.CurrentMaze;
 import ui.Messages;
 
@@ -11,7 +11,7 @@ public class StatusTwo {
         this.messages = new Messages();
     }
 
-    public void run_status_two(CurrentMaze cm, String key, RectangularMazes lom, CurrentStatus st) {
+    public void run_status_two(CurrentMaze cm, String key, ListOfMaze lom, CurrentStatus st) {
         if (key.equals("back")) {
             st.change_status(0);
             System.out.println("Going back to Main Menu...");

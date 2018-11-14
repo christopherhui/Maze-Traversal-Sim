@@ -1,7 +1,7 @@
 package ui.statuses;
 
+import model.ListOfMaze;
 import model.MazeMap;
-import model.RectangularMazes;
 import ui.Messages;
 
 public class StatusOne {
@@ -14,7 +14,7 @@ public class StatusOne {
     // REQUIRES: Is a String input
     // MODIFIES: this, lom, st
     // EFFECTS: Creates a maze with w,h dimensions, and must have values greater than 1
-    public void run_status_one(String key, RectangularMazes lom, CurrentStatus st) {
+    public void run_status_one(String key, ListOfMaze lom, CurrentStatus st) {
         if (key.equals("back")) {
             st.change_status(0);
             System.out.println("Going back to Main Menu...");

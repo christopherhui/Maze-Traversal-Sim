@@ -1,9 +1,7 @@
 package ui;
 
+import model.ListOfMaze;
 import model.MazeMap;
-import model.RectangularMazes;
-
-import java.util.Map;
 
 public class Messages {
     private final String LINES = "----------------------------------------";
@@ -31,7 +29,7 @@ public class Messages {
         System.out.println("Change your maze dimensions using: Character,h,w");
     }
 
-    public void num_mazes_avail(RectangularMazes lom) {
+    public void num_mazes_avail(ListOfMaze lom) {
         int i = 1;
         for (MazeMap mazeMap : lom.get_mazes()) {
             System.out.print(i + ": " + mazeMap.get_h() + " x " + mazeMap.get_w() + " matrix" + " ");

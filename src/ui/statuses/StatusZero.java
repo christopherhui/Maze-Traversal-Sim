@@ -1,6 +1,6 @@
 package ui.statuses;
 
-import model.RectangularMazes;
+import model.ListOfMaze;
 import ui.Messages;
 
 import java.util.Scanner;
@@ -15,7 +15,7 @@ public class StatusZero {
     // REQUIRES: Is a String input
     // MODIFIES: this, lom (in the future), st
     // EFFECTS: Runs the creation, access of a maze and termination of program
-    public void run_status_zero(Scanner keys, String key, RectangularMazes lom, CurrentStatus st) {
+    public void run_status_zero(Scanner keys, String key, ListOfMaze lom, CurrentStatus st) {
         try {
             int cmd = Integer.parseInt(key);
             switch (cmd) {

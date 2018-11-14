@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class RectangularMazes {
+public class ListOfMaze {
     private List<MazeMap> mazeMaps;
 
     // EFFECTS: List has no mazes
-    public RectangularMazes() {
+    public ListOfMaze() {
         mazeMaps = new ArrayList<>();
     }
 

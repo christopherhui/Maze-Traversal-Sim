@@ -1,6 +1,5 @@
-import model.BlockConverter;
 import model.MazeMap;
-import model.RectangularMazes;
+import model.ListOfMaze;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.saveload.LoadState;
@@ -8,14 +7,14 @@ import ui.saveload.LoadState;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestLoadState {
-    RectangularMazes lom;
+    ListOfMaze lom;
     LoadState load;
 
 
     @BeforeEach
     public void start_before() {
         load = new LoadState();
-        lom = new RectangularMazes();
+        lom = new ListOfMaze();
     }
 
     // Only works if save-file matches load state!

@@ -1,7 +1,6 @@
 package ui.statuses;
 
-import model.MazeMap;
-import model.RectangularMazes;
+import model.ListOfMaze;
 import ui.CurrentMaze;
 import ui.Messages;
 
@@ -12,7 +11,7 @@ public class StatusThree {
         this.messages = new Messages();
     }
 
-    public void run_status_three(CurrentMaze cm, String key, RectangularMazes lom, CurrentStatus st) {
+    public void run_status_three(CurrentMaze cm, String key, ListOfMaze lom, CurrentStatus st) {
         if (key.equals("back")) {
             st.change_status(0);
             lom.replace_maze(cm.get_curr_maze_num(), cm.get_curr_maze());

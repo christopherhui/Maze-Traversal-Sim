@@ -1,5 +1,5 @@
 import exceptions.IllegalCharacterException;
-import model.RectangularMazes;
+import model.ListOfMaze;
 import model.MazeMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,12 +9,12 @@ import java.io.IOException;
 
 public class TestSaveState {
     SaveState st;
-    RectangularMazes lom;
+    ListOfMaze lom;
 
     @BeforeEach
     public void start_before() {
         st = new SaveState();
-        lom = new RectangularMazes();
+        lom = new ListOfMaze();
     }
 
     @Test
