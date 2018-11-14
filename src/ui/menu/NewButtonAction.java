@@ -23,11 +23,11 @@ public class NewButtonAction extends JFrame implements ActionListener {
         try {
             checkConditions(width,height);
             listOfMaze.add_maze(new MazeMap(Integer.parseInt(width), Integer.parseInt(height)));
-            JOptionPane.showMessageDialog(null, "Maze successfully created.", "Message", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("model/images/checkmark.png"));
+            JOptionPane.showMessageDialog(null, "Maze successfully created.", "Message", JOptionPane.INFORMATION_MESSAGE);
         } catch (SizeException e1) {
-            JOptionPane.showMessageDialog(null, "Size of maze must be between 3-30.", "Error", JOptionPane.WARNING_MESSAGE, new ImageIcon("model/images/sadface.png"));
+            JOptionPane.showMessageDialog(null, "Size of maze must be between 3-30.", "Error", JOptionPane.WARNING_MESSAGE);
         } catch (NumberFormatException e2) {
-            JOptionPane.showMessageDialog(null, "The input was not a valid number.", "Error", JOptionPane.WARNING_MESSAGE, new ImageIcon("model/images/sadface.png"));
+            JOptionPane.showMessageDialog(null, "The input was not a valid number.", "Error", JOptionPane.WARNING_MESSAGE);
         } catch (IllegalCharacterException e3 ) {
 
         }
