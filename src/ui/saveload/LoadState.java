@@ -6,27 +6,20 @@ import model.ListOfMaze;
 import model.MazeMap;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
 public class LoadState {
 
-    public void load(ListOfMaze lom) {
+    public void load(ListOfMaze lom, String string) throws IllegalCharacterException, CannotConvertException {
         try {
-            List<String> lines = Files.readAllLines(Paths.get("savefile.txt"));
+            List<String> lines = Files.readAllLines(Paths.get(string));
             for (String line : lines) {
-                try {
-                    MazeMap maze = new MazeMap(line);
-                    lom.add_maze(maze);
-                    System.out.println("Maze successfully added.");
-                }
-                catch (IllegalCharacterException e) {
-                    System.out.println("An unexpected character was found, maze unsuccessfully added.");
-                }
-                catch (CannotConvertException e) {
-                    System.out.println("The maze could not be converted, maze unsuccessfully added.");
-                }
+                MazeMap maze = new MazeMap(line);
+                lom.add_maze(maze);
+                System.out.println("Maze successfully added.");
             }
         }
         catch (IOException e) {

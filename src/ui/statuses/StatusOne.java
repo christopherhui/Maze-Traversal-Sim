@@ -2,7 +2,7 @@ package ui.statuses;
 
 import model.ListOfMaze;
 import model.MazeMap;
-import ui.Messages;
+import ui.input.Messages;
 
 public class StatusOne {
     private Messages messages;

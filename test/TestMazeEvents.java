@@ -1,5 +1,5 @@
 import model.ListOfMaze;
-import ui.MazeEvents;
+import ui.input.MazeEvents;
 import ui.statuses.CurrentStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

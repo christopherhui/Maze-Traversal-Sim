@@ -3,7 +3,7 @@ package ui.statuses;
 import exceptions.IllegalCharacterException;
 import exceptions.StartEndException;
 import ui.CurrentMaze;
-import ui.Messages;
+import ui.input.Messages;
 
 public class StatusFour {
     private Messages messages;

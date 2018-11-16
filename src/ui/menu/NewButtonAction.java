@@ -29,7 +29,6 @@ public class NewButtonAction extends JFrame implements ActionListener {
         } catch (NumberFormatException e2) {
             JOptionPane.showMessageDialog(null, "The input was not a valid number.", "Error", JOptionPane.WARNING_MESSAGE);
         } catch (IllegalCharacterException e3 ) {
-
         }
     }
 

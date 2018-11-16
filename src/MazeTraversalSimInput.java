@@ -1,4 +1,4 @@
-import ui.MazeEvents;
+import ui.input.MazeEvents;
 
 public class MazeTraversalSimInput {
 

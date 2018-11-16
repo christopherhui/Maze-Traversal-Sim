@@ -1,3 +1,5 @@
+import exceptions.CannotConvertException;
+import exceptions.IllegalCharacterException;
 import model.MazeMap;
 import model.ListOfMaze;
 import org.junit.jupiter.api.BeforeEach;
@@ -5,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import ui.saveload.LoadState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class TestLoadState {
     ListOfMaze lom;
@@ -20,7 +23,13 @@ public class TestLoadState {
     // Only works if save-file matches load state!
     @Test
     public void test_mazes() {
-        load.load(lom);
+        try {
+            load.load(lom, "savefile.txt");
+        } catch (IllegalCharacterException e) {
+            fail("");
+        } catch (CannotConvertException e) {
+            fail("");
+        }
         assertEquals("S O\nO E", lom.get_maze(0).toString());
         assertEquals("S O O O O\nO O O O O\nO O O O E", lom.get_maze(1).toString());
         MazeMap mazeMap = lom.get_maze(0);
@@ -34,7 +43,11 @@ public class TestLoadState {
 
     @Test
     public void failed_maze() {
-        load.load(lom);
+        try {
+            load.load(lom, "savefile.txt");
+        } catch (CannotConvertException e) {
+            fail("");
+        }
         assertEquals(lom.get_num_mazes(), 3);
     }
 }

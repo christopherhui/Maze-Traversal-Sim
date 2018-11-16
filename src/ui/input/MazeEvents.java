@@ -1,6 +1,7 @@
-package ui;
+package ui.input;
 
 import model.ListOfMaze;
+import ui.CurrentMaze;
 import ui.statuses.*;
 
 import java.util.Scanner;

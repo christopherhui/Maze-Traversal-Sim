@@ -1,7 +1,7 @@
 package ui.statuses;
 
 import model.ListOfMaze;
-import ui.Messages;
+import ui.input.Messages;
 
 import java.util.Scanner;
 

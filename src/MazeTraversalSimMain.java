@@ -1,5 +1,6 @@
 import model.ListOfMaze;
 import ui.menu.NewButtonAction;
+import ui.menu.OpenButtonAction;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +23,7 @@ public class MazeTraversalSimMain extends JFrame implements ActionListener {
 
     public MazeTraversalSimMain() {
         super("Maze Traversal Simulator");
-        getContentPane().setBackground(Color.DARK_GRAY);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
         setPreferredSize(new Dimension(600,500));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(true);
@@ -43,7 +44,7 @@ public class MazeTraversalSimMain extends JFrame implements ActionListener {
         fileMenu.add(saveMenuItem);
 
         openMenuItem = new JMenuItem("Open");
-        openMenuItem.addActionListener(this);
+        openMenuItem.addActionListener(new OpenButtonAction(listOfMaze));
         fileMenu.add(openMenuItem);
 
         menuBar.add(fileMenu);

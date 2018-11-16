@@ -1,4 +1,4 @@
-package ui;
+package ui.input;
 
 import model.ListOfMaze;
 import model.MazeMap;
