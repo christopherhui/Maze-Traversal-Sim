@@ -4,7 +4,9 @@ import exceptions.CannotConvertException;
 import exceptions.IllegalCharacterException;
 import model.ListOfMaze;
 import model.MazeMap;
+import ui.menu.OpenButtonAction;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
@@ -13,14 +15,34 @@ import java.util.List;
 
 public class LoadState {
 
-    public void load(ListOfMaze lom, String string) throws IllegalCharacterException, CannotConvertException {
+    // TODO: repetition help?
+    public void load(ListOfMaze lom, String string) {
         try {
             List<String> lines = Files.readAllLines(Paths.get(string));
             for (String line : lines) {
                 MazeMap maze = new MazeMap(line);
                 lom.add_maze(maze);
-                System.out.println("Maze successfully added.");
             }
+        }
+        catch (CannotConvertException e1) {
+            System.out.println();
+        }
+        catch (IOException e) {
+            System.out.println("No file was found!");
+        }
+    }
+
+    public void load(ListOfMaze lom, String string, DefaultListModel defaultListModel) {
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(string));
+            for (String line : lines) {
+                MazeMap maze = new MazeMap(line);
+                lom.add_maze(maze);
+                defaultListModel.addElement("Loaded maze: " + maze.get_w() + " by " + maze.get_h() + " dimensions.");
+            }
+        }
+        catch (CannotConvertException e1) {
+            System.out.println();
         }
         catch (IOException e) {
             System.out.println("No file was found!");

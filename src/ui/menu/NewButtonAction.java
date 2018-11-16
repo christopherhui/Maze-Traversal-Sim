@@ -10,20 +10,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NewButtonAction extends JFrame implements ActionListener {
-    ListOfMaze listOfMaze;
+    private ListOfMaze listOfMaze;
+    private DefaultListModel defaultListModel;
 
-    public NewButtonAction(ListOfMaze listOfMaze) {
+    public NewButtonAction(ListOfMaze listOfMaze, DefaultListModel defaultListModel) {
         this.listOfMaze = listOfMaze;
+        this.defaultListModel = defaultListModel;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String width = JOptionPane.showInputDialog("What size is your new maze width?");
         String height = JOptionPane.showInputDialog("What size is your new maze height?");
+        String name = JOptionPane.showInputDialog("What is the name of your maze?");
         try {
             checkConditions(width,height);
             listOfMaze.add_maze(new MazeMap(Integer.parseInt(width), Integer.parseInt(height)));
             JOptionPane.showMessageDialog(null, "Maze successfully created.", "Message", JOptionPane.INFORMATION_MESSAGE);
+            defaultListModel.addElement(name + ": " + width + " by " + height + " dimensions.");
         } catch (SizeException e1) {
             JOptionPane.showMessageDialog(null, "Size of maze must be between 3-30.", "Error", JOptionPane.WARNING_MESSAGE);
         } catch (NumberFormatException e2) {

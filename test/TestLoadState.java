@@ -23,13 +23,7 @@ public class TestLoadState {
     // Only works if save-file matches load state!
     @Test
     public void test_mazes() {
-        try {
-            load.load(lom, "savefile.txt");
-        } catch (IllegalCharacterException e) {
-            fail("");
-        } catch (CannotConvertException e) {
-            fail("");
-        }
+        load.load(lom, "savefile.txt");
         assertEquals("S O\nO E", lom.get_maze(0).toString());
         assertEquals("S O O O O\nO O O O O\nO O O O E", lom.get_maze(1).toString());
         MazeMap mazeMap = lom.get_maze(0);
@@ -43,11 +37,7 @@ public class TestLoadState {
 
     @Test
     public void failed_maze() {
-        try {
-            load.load(lom, "savefile.txt");
-        } catch (CannotConvertException e) {
-            fail("");
-        }
+        load.load(lom, "savefile.txt");
         assertEquals(lom.get_num_mazes(), 3);
     }
 }

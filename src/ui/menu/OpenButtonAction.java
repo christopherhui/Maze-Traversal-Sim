@@ -3,6 +3,7 @@ package ui.menu;
 import exceptions.CannotConvertException;
 import exceptions.IllegalCharacterException;
 import model.ListOfMaze;
+import model.MazeMap;
 import ui.saveload.LoadState;
 
 import javax.swing.*;
@@ -12,10 +13,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class OpenButtonAction implements ActionListener {
-    ListOfMaze listOfMaze;
+    private ListOfMaze listOfMaze;
+    private DefaultListModel defaultListModel;
 
-    public OpenButtonAction(ListOfMaze listOfMaze) {
+    public OpenButtonAction(ListOfMaze listOfMaze, DefaultListModel defaultListModel) {
         this.listOfMaze = listOfMaze;
+        this.defaultListModel = defaultListModel;
     }
 
     @Override
@@ -31,11 +34,7 @@ public class OpenButtonAction implements ActionListener {
             LoadState loadState = new LoadState();
             String fileName = jfc.getSelectedFile().getPath().substring(jfc.getSelectedFile().getPath().lastIndexOf("\\")+1);
             System.out.println(fileName);
-            try {
-                loadState.load(listOfMaze, fileName);
-            }
-            catch (CannotConvertException e1) {
-            }
+            loadState.load(listOfMaze, fileName, defaultListModel);
         }
     }
 }
