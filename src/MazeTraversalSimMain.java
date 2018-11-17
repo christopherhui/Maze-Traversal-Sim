@@ -20,6 +20,7 @@ public class MazeTraversalSimMain extends JFrame implements ActionListener {
     private JMenuItem openMenuItem;
     private ListOfMaze listOfMaze;
     private DefaultListModel<String> defaultListModel;
+    private GridLayout gridLayout;
 
     public static void main(String[] args) {
         new MazeTraversalSimMain();
@@ -34,6 +35,8 @@ public class MazeTraversalSimMain extends JFrame implements ActionListener {
 
         controlPanel = new JPanel();
         menuBar = new JMenuBar();
+        gridLayout = new GridLayout(1,3);
+        setLayout(gridLayout);
 
         listOfMaze = new ListOfMaze();
         defaultListModel = new DefaultListModel<>();
@@ -55,8 +58,10 @@ public class MazeTraversalSimMain extends JFrame implements ActionListener {
 
         //sideBar creation
         JList<String> mazesAvaliable = new JList<>(defaultListModel);
-        mazesAvaliable.setBounds(50,50,50,50);
+        add(new JLabel(""));
+        add(new JLabel(""));
         add(mazesAvaliable);
+
 
         setJMenuBar(menuBar);
         setLocationRelativeTo(null);

@@ -32,6 +32,7 @@ public class SaveAsButtonAction implements ActionListener {
             System.out.println(fileName);
             try {
                 saveState.save(listOfMaze, fileName);
+                JOptionPane.showMessageDialog(null, "File successfuly saved.", "Message", JOptionPane.INFORMATION_MESSAGE);
             }
             catch (IOException e1) {
             }
