@@ -8,6 +8,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class SaveAsButtonAction implements ActionListener {
     ListOfMaze listOfMaze;
@@ -29,7 +30,11 @@ public class SaveAsButtonAction implements ActionListener {
             SaveState saveState = new SaveState();
             String fileName = jfc.getSelectedFile().getPath().substring(jfc.getSelectedFile().getPath().lastIndexOf("\\")+1);
             System.out.println(fileName);
-            saveState.save(listOfMaze, fileName);
+            try {
+                saveState.save(listOfMaze, fileName);
+            }
+            catch (IOException e1) {
+            }
         }
     }
 }
