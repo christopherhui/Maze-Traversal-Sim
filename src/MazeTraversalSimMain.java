@@ -1,6 +1,7 @@
 import model.ListOfMaze;
 import ui.menu.NewButtonAction;
 import ui.menu.OpenButtonAction;
+import ui.saveload.SaveAsButtonAction;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,8 +44,8 @@ public class MazeTraversalSimMain extends JFrame implements ActionListener {
         newMenuItem.addActionListener(new NewButtonAction(listOfMaze, defaultListModel));
         fileMenu.add(newMenuItem);
 
-        saveMenuItem = new JMenuItem("Save");
-        saveMenuItem.addActionListener(this);
+        saveMenuItem = new JMenuItem("Save As");
+        saveMenuItem.addActionListener(new SaveAsButtonAction());
         fileMenu.add(saveMenuItem);
 
         openMenuItem = new JMenuItem("Open");
@@ -54,7 +55,7 @@ public class MazeTraversalSimMain extends JFrame implements ActionListener {
 
         //sideBar creation
         JList<String> mazesAvaliable = new JList<>(defaultListModel);
-        mazesAvaliable.setBounds(1,1,1,1);
+        mazesAvaliable.setBounds(50,50,50,50);
         add(mazesAvaliable);
 
         setJMenuBar(menuBar);
