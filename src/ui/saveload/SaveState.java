@@ -10,8 +10,8 @@ public class SaveState {
 
     // REQUIRES: ListOfMaze is non-empty
     // EFFECTS: saves maze implementation into a output-file
-    public void save(ListOfMaze lom) throws IOException {
-        PrintWriter writer = new PrintWriter("savefile.txt","UTF-8");
+    public void save(ListOfMaze lom, String saveFile) throws IOException {
+        PrintWriter writer = new PrintWriter(saveFile,"UTF-8");
         for (MazeMap mazeMap : lom.get_mazes()) {
             writer.println(save_maze(mazeMap));
         }

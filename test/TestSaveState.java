@@ -23,6 +23,6 @@ public class TestSaveState {
         MazeMap m1 = new MazeMap(5,3);
         lom.add_maze(m);
         lom.add_maze(m1);
-        st.save(lom);
+        st.save(lom, "savefile.txt");
     }
 }

@@ -1,7 +1,7 @@
 import model.ListOfMaze;
 import ui.menu.NewButtonAction;
 import ui.menu.OpenButtonAction;
-import ui.saveload.SaveAsButtonAction;
+import ui.menu.SaveAsButtonAction;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +45,7 @@ public class MazeTraversalSimMain extends JFrame implements ActionListener {
         fileMenu.add(newMenuItem);
 
         saveMenuItem = new JMenuItem("Save As");
-        saveMenuItem.addActionListener(new SaveAsButtonAction());
+        saveMenuItem.addActionListener(new SaveAsButtonAction(listOfMaze));
         fileMenu.add(saveMenuItem);
 
         openMenuItem = new JMenuItem("Open");
