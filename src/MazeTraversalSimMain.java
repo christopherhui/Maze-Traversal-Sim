@@ -27,7 +27,7 @@ public class MazeTraversalSimMain extends JFrame implements ActionListener {
     public MazeTraversalSimMain() {
         super("Maze Traversal Simulator");
         getContentPane().setBackground(Color.LIGHT_GRAY);
-        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(true);
 
@@ -58,7 +58,6 @@ public class MazeTraversalSimMain extends JFrame implements ActionListener {
         add(mazesAvaliable);
 
         setJMenuBar(menuBar);
-        pack();
         setLocationRelativeTo(null);
         setVisible(true);
     }
