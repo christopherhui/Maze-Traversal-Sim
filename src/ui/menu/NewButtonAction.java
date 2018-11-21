@@ -39,7 +39,7 @@ public class NewButtonAction extends JFrame implements ActionListener {
         int widthNum = Integer.parseInt(width);
         int heightNum = Integer.parseInt(height);
         // Cannot be larger than 30 or smaller than 3
-        if (widthNum > 30 || widthNum < 2 || heightNum > 30 || heightNum < 2) {
+        if (widthNum > 30 || widthNum <= 2 || heightNum > 30 || heightNum <= 2) {
             throw new SizeException();
         }
     }

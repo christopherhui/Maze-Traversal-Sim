@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MazeTraversalSimMain extends JFrame {
-    private final int WIDTH = 700;
+    private final int WIDTH = 800;
     private final int HEIGHT = 600;
 
     private JMenuBar menuBar;
@@ -63,8 +63,20 @@ public class MazeTraversalSimMain extends JFrame {
         //sideBar creation
         JList<String> mazesAvaliable = new JList<>(defaultListModel);
         mazesAvaliable.addMouseListener(new MazeSelect(listOfMaze, selectedMaze));
-
         add(mazesAvaliable, BorderLayout.EAST);
+
+        //JButton creation
+        JPanel buttonPane = new JPanel();
+        buttonPane.setLayout(new GridLayout(3,3));
+        buttonPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        buttonPane.add(new JButton());
+        buttonPane.add(new JButton());
+        buttonPane.add(new JButton());
+        buttonPane.add(new JButton());
+        buttonPane.add(new JButton());
+        buttonPane.add(new JButton());buttonPane.add(new JButton());buttonPane.add(new JButton());buttonPane.add(new JButton());
+
+        add(buttonPane);
 
         setLocationRelativeTo(null);
         setVisible(true);
