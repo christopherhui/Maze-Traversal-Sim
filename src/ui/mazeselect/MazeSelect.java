@@ -32,7 +32,7 @@ public class MazeSelect implements MouseListener {
             MazeMap selectedMaze = listOfMaze.get_maze(Character.getNumericValue(parsedName[1].charAt(0)));
             currentMaze.set_curr_maze(selectedMaze);
             System.out.println(listOfMaze.get_maze(Character.getNumericValue(parsedName[1].charAt(0))));
-            removeMaze(selectedMaze);
+            removeMaze();
             createMaze(selectedMaze);
         }
     }
@@ -68,14 +68,10 @@ public class MazeSelect implements MouseListener {
         }
     }
 
-    public void removeMaze(MazeMap mazeMap) {
-        if (jButtons != null) {
-            for (int i = 0; i < mazeMap.get_h(); i++) {
-                for (int j = 0; j < mazeMap.get_w(); j++) {
-                    mainFrame.getButtonPane().remove(jButtons[i][j]);
-                }
-            }
-            jButtons = null;
-        }
+    public void removeMaze() {
+        mainFrame.getButtonPane().removeAll();
+        jButtons = null;
+        mainFrame.getButtonPane().revalidate();
+        mainFrame.repaint();
     }
 }
