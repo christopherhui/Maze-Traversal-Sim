@@ -114,12 +114,12 @@ public class MazeMap extends SpecializedBlock {
         if (s.equals("S")) {
             maze[Integer.parseInt(dimensionsStart[0])][Integer.parseInt(dimensionsStart[1])] = bc.block_converter("O");
             maze[w][h] = bc.block_converter("S");
-            start = Integer.toString(h) + "," + Integer.toString(w);
+            start = Integer.toString(w) + "," + Integer.toString(h);
         }
         else if (s.equals("E")) {
             maze[Integer.parseInt(dimensionsEnd[0])][Integer.parseInt(dimensionsEnd[1])] = bc.block_converter("O");
             maze[w][h] = bc.block_converter("E");
-            end = Integer.toString(h) + "," + Integer.toString(w);
+            end = Integer.toString(w) + "," + Integer.toString(h);
         }
         else if(w == Integer.parseInt(dimensionsStart[0]) && h == Integer.parseInt(dimensionsStart[1])) {
             throw new StartEndException();
@@ -152,5 +152,13 @@ public class MazeMap extends SpecializedBlock {
     // TODO: complete this method
     public boolean traverse() {
         return false;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public String getEnd() {
+        return end;
     }
 }

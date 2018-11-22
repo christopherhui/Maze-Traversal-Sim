@@ -1,7 +1,6 @@
 package ui;
 
 import model.ListOfMaze;
-import model.blocks.SpecializedBlock;
 import ui.mazeedit.EmptyButtonActionListener;
 import ui.mazeedit.EndButtonActionListener;
 import ui.mazeedit.StartButtonActionListener;
@@ -63,11 +62,6 @@ public class MainFrame extends JFrame {
         openMenuItem.addActionListener(new OpenButtonAction(listOfMaze, defaultListModel));
         fileMenu.add(openMenuItem);
         menuBar.add(fileMenu);
-
-        // Maze Menu Buttons
-        mazeMenu = new JMenu("Maze");
-        mazeMenu.setEnabled((selectedMaze.get_curr_maze() != null));
-        menuBar.add(mazeMenu);
 
         //sideBar creation
         JList<String> mazesAvaliable = new JList<>(defaultListModel);
