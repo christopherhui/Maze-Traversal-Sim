@@ -1,6 +1,11 @@
 package ui;
 
 import model.ListOfMaze;
+import model.blocks.SpecializedBlock;
+import ui.mazeedit.EmptyButtonActionListener;
+import ui.mazeedit.EndButtonActionListener;
+import ui.mazeedit.StartButtonActionListener;
+import ui.mazeedit.WallButtonActionListener;
 import ui.mazeselect.MazeSelect;
 import ui.menu.NewButtonAction;
 import ui.menu.OpenButtonAction;
@@ -21,6 +26,8 @@ public class MainFrame extends JFrame {
     private CurrentMaze selectedMaze;
     private JPanel buttonPane;
     private JPanel barButtons;
+    private String selectedButton;
+    JLabel textButtonSelect;
 
     public MainFrame() {
         super("Maze Traversal Simulator");
@@ -38,6 +45,7 @@ public class MainFrame extends JFrame {
         selectedMaze = new CurrentMaze();
         buttonPane = new JPanel();
         barButtons = new JPanel();
+        selectedButton = "";
 
         setJMenuBar(menuBar);
 
@@ -72,10 +80,9 @@ public class MainFrame extends JFrame {
         //barButtons creation
         barButtons.setLayout(new FlowLayout());
         barButtons.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        barButtons.add(new JButton("Empty"));
-        barButtons.add(new JButton("Wall"));
-        barButtons.add(new JButton("Start"));
-        barButtons.add(new JButton("End"));
+        textButtonSelect = new JLabel("Button selected: None");
+        setupButtons();
+        barButtons.add(textButtonSelect);
         add(barButtons, BorderLayout.SOUTH);
 
         setLocationRelativeTo(null);
@@ -88,5 +95,36 @@ public class MainFrame extends JFrame {
 
     public void setSelectedMaze(CurrentMaze selectedMaze) {
         this.selectedMaze = selectedMaze;
+    }
+
+    public void setupButtons() {
+        JButton emptyButton = new JButton("Empty");
+        emptyButton.setBackground(Color.WHITE);
+        emptyButton.addActionListener(new EmptyButtonActionListener(this));
+        barButtons.add(emptyButton);
+
+        JButton wallButton = new JButton("Wall");
+        wallButton.setBackground(Color.GRAY);
+        wallButton.addActionListener(new WallButtonActionListener(this));
+        barButtons.add(wallButton);
+
+        JButton startButton = new JButton("Start");
+        startButton.setBackground(new Color(204, 223, 255));
+        startButton.addActionListener(new StartButtonActionListener(this));
+        barButtons.add(startButton);
+
+        JButton endButton = new JButton("End");
+        endButton.setBackground(new Color(211, 111, 242));
+        endButton.addActionListener(new EndButtonActionListener(this));
+        barButtons.add(endButton);
+    }
+
+    public void changeButtonStatus(String status) {
+        selectedButton = status;
+        textButtonSelect.setText("Button selected: " + status);
+    }
+
+    public String getButtonStatus() {
+        return selectedButton;
     }
 }

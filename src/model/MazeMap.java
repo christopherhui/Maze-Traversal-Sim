@@ -121,10 +121,10 @@ public class MazeMap extends SpecializedBlock {
             maze[w][h] = bc.block_converter("E");
             end = Integer.toString(h) + "," + Integer.toString(w);
         }
-        else if(w == Integer.parseInt(dimensionsStart[0]) && h == Integer.parseInt(dimensionsStart[0])) {
+        else if(w == Integer.parseInt(dimensionsStart[0]) && h == Integer.parseInt(dimensionsStart[1])) {
             throw new StartEndException();
         }
-        else if(w == Integer.parseInt(dimensionsEnd[1]) || h == Integer.parseInt(dimensionsEnd[1])) {
+        else if(w == Integer.parseInt(dimensionsEnd[0]) && h == Integer.parseInt(dimensionsEnd[1])) {
             throw new StartEndException();
         }
         else {

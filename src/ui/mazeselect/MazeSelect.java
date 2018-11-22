@@ -4,6 +4,7 @@ import model.ListOfMaze;
 import model.MazeMap;
 import ui.CurrentMaze;
 import ui.MainFrame;
+import ui.mazeedit.ChangeButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,6 +67,7 @@ public class MazeSelect implements MouseListener {
                 jButtons[i][j] = new JButton();
                 jButtons[i][j].setBackground(mazeMap.get_maze()[i][j].get_background_color());
                 jButtons[i][j].setText(mazeMap.get_maze()[i][j].get_text_display());
+                jButtons[i][j].addActionListener(new ChangeButton(mainFrame, mazeMap, i, j, jButtons[i][j]));
                 mainFrame.getButtonPane().add(jButtons[i][j]);
             }
         }

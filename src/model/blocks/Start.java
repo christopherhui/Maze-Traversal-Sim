@@ -6,7 +6,7 @@ public class Start extends SpecializedBlock{
 
     public Start() {
         super();
-        backgroundColor = Color.PINK;
+        backgroundColor = new Color(204, 223, 255);
         textColor = Color.RED;
         text = "S";
         textDisplay = "Start";

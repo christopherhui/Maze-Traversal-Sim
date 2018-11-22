@@ -6,7 +6,7 @@ public class End extends SpecializedBlock {
 
     public End() {
         super();
-        backgroundColor = Color.PINK;
+        backgroundColor = new Color(211, 111, 242);
         textColor = Color.BLUE;
         text = "E";
         textDisplay = "End";
