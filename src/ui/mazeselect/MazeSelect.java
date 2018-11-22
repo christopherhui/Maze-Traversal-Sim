@@ -60,7 +60,7 @@ public class MazeSelect implements MouseListener {
     public void createMaze(MazeMap mazeMap) {
         jButtons = new JButton[mazeMap.get_h()][mazeMap.get_w()];
         mainFrame.getButtonPane().setLayout(new GridLayout(mazeMap.get_h(),mazeMap.get_w()));
-        mainFrame.getButtonPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        mainFrame.getButtonPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
         for (int i = 0; i < mazeMap.get_h(); i++) {
             for (int j = 0; j < mazeMap.get_w(); j++) {
                 jButtons[i][j] = new JButton();

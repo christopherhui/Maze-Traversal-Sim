@@ -20,6 +20,7 @@ public class MainFrame extends JFrame {
     private DefaultListModel<String> defaultListModel;
     private CurrentMaze selectedMaze;
     private JPanel buttonPane;
+    private JPanel barButtons;
 
     public MainFrame() {
         super("Maze Traversal Simulator");
@@ -36,6 +37,7 @@ public class MainFrame extends JFrame {
         defaultListModel = new DefaultListModel<>();
         selectedMaze = new CurrentMaze();
         buttonPane = new JPanel();
+        barButtons = new JPanel();
 
         setJMenuBar(menuBar);
 
@@ -65,7 +67,16 @@ public class MainFrame extends JFrame {
         add(mazesAvaliable, BorderLayout.EAST);
 
         //JButton creation
-        add(buttonPane);
+        add(buttonPane, BorderLayout.CENTER);
+
+        //barButtons creation
+        barButtons.setLayout(new FlowLayout());
+        barButtons.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        barButtons.add(new JButton("Empty"));
+        barButtons.add(new JButton("Wall"));
+        barButtons.add(new JButton("Start"));
+        barButtons.add(new JButton("End"));
+        add(barButtons, BorderLayout.SOUTH);
 
         setLocationRelativeTo(null);
         setVisible(true);
