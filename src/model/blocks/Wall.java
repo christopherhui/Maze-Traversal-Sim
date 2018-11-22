@@ -1,9 +1,11 @@
 package model.blocks;
 
+import java.awt.*;
+
 public class Wall extends SpecializedBlock {
 
     public Wall() {
-        backgroundColor = "Black";
+        backgroundColor = Color.BLACK;
         status = 1;
         text = "W";
     }

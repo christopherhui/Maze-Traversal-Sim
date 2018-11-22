@@ -74,4 +74,8 @@ public class MainFrame extends JFrame {
     public JPanel getButtonPane() {
         return buttonPane;
     }
+
+    public void setSelectedMaze(CurrentMaze selectedMaze) {
+        this.selectedMaze = selectedMaze;
+    }
 }

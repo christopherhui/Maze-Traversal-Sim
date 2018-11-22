@@ -1,10 +1,12 @@
 package model.blocks;
 
+import java.awt.*;
+
 public class Traversed extends SpecializedBlock {
 
     public Traversed() {
         super();
-        backgroundColor = "Grey";
+        backgroundColor = Color.GRAY;
         status = 1;
         text = "V";
     }

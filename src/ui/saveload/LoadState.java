@@ -38,7 +38,7 @@ public class LoadState {
             for (String line : lines) {
                 MazeMap maze = new MazeMap(line);
                 lom.add_maze(maze);
-                defaultListModel.addElement("Maze " + defaultListModel.size() + " : " + maze.get_w() + " by " + maze.get_h() + " dimensions.");
+                defaultListModel.addElement("Maze " + defaultListModel.size() + ": " + maze.get_w() + " by " + maze.get_h() + " dimensions.");
             }
         }
         catch (CannotConvertException e1) {
