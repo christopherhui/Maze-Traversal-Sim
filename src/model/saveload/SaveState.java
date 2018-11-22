@@ -1,4 +1,4 @@
-package ui.saveload;
+package model.saveload;
 
 import model.ListOfMaze;
 import model.MazeMap;

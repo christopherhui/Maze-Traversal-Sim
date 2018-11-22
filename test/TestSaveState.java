@@ -3,7 +3,7 @@ import model.ListOfMaze;
 import model.MazeMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.saveload.SaveState;
+import model.saveload.SaveState;
 
 import java.io.IOException;
 

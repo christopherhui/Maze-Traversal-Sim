@@ -1,7 +1,7 @@
 package ui.menu;
 
 import model.ListOfMaze;
-import ui.saveload.SaveState;
+import model.saveload.SaveState;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;

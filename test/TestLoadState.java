@@ -1,10 +1,8 @@
-import exceptions.CannotConvertException;
-import exceptions.IllegalCharacterException;
 import model.MazeMap;
 import model.ListOfMaze;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.saveload.LoadState;
+import model.saveload.LoadState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;

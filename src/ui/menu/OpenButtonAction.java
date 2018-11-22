@@ -1,10 +1,7 @@
 package ui.menu;
 
-import exceptions.CannotConvertException;
-import exceptions.IllegalCharacterException;
 import model.ListOfMaze;
-import model.MazeMap;
-import ui.saveload.LoadState;
+import model.saveload.LoadState;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;

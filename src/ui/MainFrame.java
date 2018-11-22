@@ -19,7 +19,6 @@ public class MainFrame extends JFrame {
 
     private JMenuBar menuBar;
     private JMenu fileMenu;
-    private JMenu mazeMenu;
     private ListOfMaze listOfMaze;
     private DefaultListModel<String> defaultListModel;
     private CurrentMaze selectedMaze;
