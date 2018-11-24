@@ -1,10 +1,7 @@
 package ui;
 
 import model.ListOfMaze;
-import ui.mazeedit.EmptyButtonActionListener;
-import ui.mazeedit.EndButtonActionListener;
-import ui.mazeedit.StartButtonActionListener;
-import ui.mazeedit.WallButtonActionListener;
+import ui.mazeedit.*;
 import ui.mazeselect.MazeSelect;
 import ui.menu.NewButtonAction;
 import ui.menu.OpenButtonAction;
@@ -91,6 +88,10 @@ public class MainFrame extends JFrame {
     }
 
     public void setupButtons() {
+        JButton traverseButton = new JButton("DFS Traverse");
+        traverseButton.setBackground(Color.PINK);
+        traverseButton.addActionListener(new TraverseButtonActionListener(this, selectedMaze.get_curr_maze()));
+
         JButton emptyButton = new JButton("Empty");
         emptyButton.setBackground(Color.WHITE);
         emptyButton.addActionListener(new EmptyButtonActionListener(this));

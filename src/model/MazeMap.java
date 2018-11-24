@@ -7,6 +7,7 @@ import exceptions.LargerLengthException;
 import exceptions.ShorterLengthException;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class MazeMap extends SpecializedBlock {
@@ -150,7 +151,48 @@ public class MazeMap extends SpecializedBlock {
     }
 
     // TODO: complete this method
-    public boolean traverse() {
+    public boolean searchPath(SpecializedBlock[][] maze, int x, int y, List<Integer> path) {
+        if (maze[y][x].getClass().toString().equals("End")) {
+            path.add(x);
+            path.add(y);
+            return true;
+        }
+
+        if (maze[y][x].getClass().toString().equals("EmptySpace")) {
+            maze[y][x] = new Traversed();
+
+            int dx = -1;
+            int dy = 0;
+            if (searchPath(maze, x + dx, y + dy, path)) {
+                path.add(x);
+                path.add(y);
+                return true;
+            }
+
+            dx = 1;
+            dy = 0;
+            if (searchPath(maze, x + dx, y + dy, path)) {
+                path.add(x);
+                path.add(y);
+                return true;
+            }
+
+            dx = 0;
+            dy = -1;
+            if (searchPath(maze, x + dx, y + dy, path)) {
+                path.add(x);
+                path.add(y);
+                return true;
+            }
+
+            dx = 0;
+            dy = 1;
+            if (searchPath(maze, x + dx, y + dy, path)) {
+                path.add(x);
+                path.add(y);
+                return true;
+            }
+        }
         return false;
     }
 

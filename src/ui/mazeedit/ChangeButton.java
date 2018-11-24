@@ -80,7 +80,7 @@ public class ChangeButton implements ActionListener {
     }
 
     public void changeBlock() {
-        System.out.println(mazeMap);
+        System.out.println(mazeMap+"\n");
         jButtonSelected.setBackground(mazeMap.get_maze()[width][height].get_background_color());
         jButtonSelected.setText(mazeMap.get_maze()[width][height].get_text_display());
     }
