@@ -89,9 +89,6 @@ public class MainFrame extends JFrame {
     }
 
     public void setupButtons() {
-        JButton traverseButton = new JButton("DFS Traverse");
-        traverseButton.setBackground(Color.PINK);
-        traverseButton.addActionListener(new TraverseButtonActionListener(this, selectedMaze.get_curr_maze()));
 
         JButton emptyButton = new JButton("Empty");
         emptyButton.setBackground(Color.WHITE);
