@@ -9,6 +9,7 @@ import ui.menu.SaveAsButtonAction;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
     private final int WIDTH = 800;
@@ -23,7 +24,8 @@ public class MainFrame extends JFrame {
     private JPanel buttonPane;
     private JPanel barButtons;
     private String selectedButton;
-    JLabel textButtonSelect;
+    private JLabel textButtonSelect;
+    private TraverseButtonActionListener traverseActionListener;
 
     public MainFrame() {
         super("Maze Traversal Simulator");
@@ -86,6 +88,7 @@ public class MainFrame extends JFrame {
 
     public void setSelectedMaze(CurrentMaze selectedMaze) {
         this.selectedMaze = selectedMaze;
+        traverseActionListener.setMazeMap(selectedMaze.get_curr_maze());
     }
 
     public void setupButtons() {
@@ -109,6 +112,12 @@ public class MainFrame extends JFrame {
         endButton.setBackground(new Color(211, 111, 242));
         endButton.addActionListener(new EndButtonActionListener(this));
         barButtons.add(endButton);
+
+        JButton traverseButton = new JButton("Traverse");
+        traverseButton.setBackground(Color.YELLOW);
+        traverseActionListener = new TraverseButtonActionListener(this, selectedMaze.get_curr_maze());
+        traverseButton.addActionListener(traverseActionListener);
+        barButtons.add(traverseButton);
     }
 
     public void changeButtonStatus(String status) {

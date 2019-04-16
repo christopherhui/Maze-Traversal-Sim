@@ -6,9 +6,7 @@ import exceptions.IllegalCharacterException;
 import exceptions.LargerLengthException;
 import exceptions.ShorterLengthException;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class MazeMap extends SpecializedBlock {
     private int mazeHLength;
@@ -133,6 +131,74 @@ public class MazeMap extends SpecializedBlock {
         }
     }
 
+    public void traverseBFS() throws IllegalCharacterException {
+        boolean[][] visited = new boolean[mazeHLength][mazeWLength];
+        Map<CoordPair<Integer, Integer>, CoordPair<Integer, Integer>> parent = new HashMap<>();
+        Queue<CoordPair<Integer, Integer>> queue = new LinkedList<>();
+        List<CoordPair<Integer, Integer>> directions = new ArrayList<>();
+        boolean found = false;
+
+        directions.add(new CoordPair<>(-1,0));
+        directions.add(new CoordPair<>(0, -1));
+        directions.add(new CoordPair<>(0, 1));
+        directions.add(new CoordPair<>(1, 0));
+
+        for (int i = 0; i < mazeHLength; i++) {
+            for (int j = 0; j < mazeWLength; j++) {
+                visited[i][j] = false;
+            }
+        }
+        queue.add(new CoordPair<>(Integer.parseInt(start.split(",")[0]), Integer.parseInt(start.split(",")[1])));
+        visited[Integer.parseInt(start.split(",")[0])][Integer.parseInt(start.split(",")[1])] = true;
+
+        CoordPair<Integer, Integer> curVal = null;
+        while (!queue.isEmpty()) {
+            curVal = queue.remove();
+
+            if (curVal.first == Integer.parseInt(end.split(",")[0])
+                    && curVal.second == Integer.parseInt(end.split(",")[1])) {
+                found = true;
+                break;
+            }
+
+
+            // Checks if it is the start or the end block, if it is, it doesn't do anything
+            if (curVal.first == Integer.parseInt(start.split(",")[0]) &&
+                    curVal.second == Integer.parseInt(start.split(",")[1]) ||
+                    curVal.first == Integer.parseInt(end.split(",")[0]) &&
+                    curVal.second == Integer.parseInt(end.split(",")[1])) {
+            }
+            else maze[curVal.second][curVal.first] = bc.block_converter("V");
+
+            // Todo: Add a way to change the block's color, needs an association between ChangeButton and MazeMap
+            // Todo: Check if the block is at the end, if it is, then you have finished searching
+
+            for (int i = 0; i < 4; i++) {
+                if (curVal.first + directions.get(i).first >= 0 && curVal.first + directions.get(i).first < mazeWLength
+                    && curVal.second + directions.get(i).second >= 0 && curVal.second + directions.get(i).second < mazeHLength
+                    && !visited[curVal.second+directions.get(i).second][curVal.first+directions.get(i).first]
+                    && maze[curVal.second+directions.get(i).second][curVal.first+directions.get(i).first].toString() != "W") {
+                        int x = curVal.first+directions.get(i).first;
+                        int y = curVal.second+directions.get(i).second;
+                        visited[y][x] = true;
+                        parent.put(new CoordPair<>(x, y), new CoordPair<>(curVal.first, curVal.second));
+                        queue.add(new CoordPair<>(x, y));
+                }
+            }
+        }
+
+        if (found) {
+            curVal = parent.get(new CoordPair<>(curVal.first, curVal.second));
+            while (curVal.first != Integer.parseInt(start.split(",")[0])
+                    || curVal.second != Integer.parseInt(start.split(",")[1])) {
+                // Todo: Does a backtrack to find the path from start to end
+                maze[curVal.second][curVal.first] = bc.block_converter("F");
+                curVal = parent.get(new CoordPair<>(curVal.first, curVal.second));
+            }
+        }
+        System.out.println(this);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -156,5 +222,29 @@ public class MazeMap extends SpecializedBlock {
 
     public String getEnd() {
         return end;
+    }
+
+    private class CoordPair<S, T> {
+        S first;
+        T second;
+
+        public CoordPair(S x, T y) {
+            this.first = x;
+            this.second = y;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            CoordPair<?, ?> coordPair = (CoordPair<?, ?>) o;
+            return Objects.equals(first, coordPair.first) &&
+                    Objects.equals(second, coordPair.second);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(first, second);
+        }
     }
 }

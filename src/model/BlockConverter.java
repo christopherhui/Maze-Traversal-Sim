@@ -2,6 +2,7 @@ package model;
 
 import exceptions.IllegalCharacterException;
 import model.blocks.*;
+import ui.mazeedit.ChangeButton;
 
 import java.util.Map;
 
@@ -9,6 +10,7 @@ public class BlockConverter {
     MazeMap mazeMap;
     AllBlocks allBlocks;
     BlockFactory blockFactory;
+
 
     public BlockConverter(MazeMap mazeMap) {
         this.mazeMap = mazeMap;
@@ -37,6 +39,7 @@ public class BlockConverter {
     // REQUIRES: must be a valid block type
     // EFFECTS: Changes a String to a Block object representing a block in a maze
     public SpecializedBlock block_converter(String s) throws IllegalCharacterException {
+
         return blockFactory.makeBlock(s);
     }
 }
