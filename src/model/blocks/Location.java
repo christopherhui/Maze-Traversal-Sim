@@ -6,7 +6,7 @@ public class Location extends SpecializedBlock {
 
     public Location() {
         super();
-        backgroundColor = Color.GREEN;
+        backgroundColor = new Color(143,249,116);
         text = "F";
     }
 

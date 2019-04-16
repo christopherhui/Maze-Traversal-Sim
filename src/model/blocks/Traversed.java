@@ -6,7 +6,7 @@ public class Traversed extends SpecializedBlock {
 
     public Traversed() {
         super();
-        backgroundColor = Color.GRAY;
+        backgroundColor = new Color(233, 233, 233);
         status = 1;
         text = "V";
     }
