@@ -149,14 +149,14 @@ public class MazeMap extends SpecializedBlock {
             }
         }
         queue.add(new CoordPair<>(Integer.parseInt(start.split(",")[0]), Integer.parseInt(start.split(",")[1])));
-        visited[Integer.parseInt(start.split(",")[0])][Integer.parseInt(start.split(",")[1])] = true;
+        visited[Integer.parseInt(start.split(",")[1])][Integer.parseInt(start.split(",")[0])] = true;
 
         CoordPair<Integer, Integer> curVal = null;
         while (!queue.isEmpty()) {
             curVal = queue.remove();
 
-            if (curVal.first == Integer.parseInt(end.split(",")[0])
-                    && curVal.second == Integer.parseInt(end.split(",")[1])) {
+            if (curVal.second == Integer.parseInt(end.split(",")[0])
+                    && curVal.first == Integer.parseInt(end.split(",")[1])) {
                 found = true;
                 break;
             }
