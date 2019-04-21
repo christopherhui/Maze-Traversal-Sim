@@ -1,6 +1,7 @@
 package ui;
 
 import model.ListOfMaze;
+import model.blocks.*;
 import ui.mazeedit.*;
 import ui.menu.NewButtonAction;
 import ui.menu.OpenButtonAction;
@@ -96,22 +97,25 @@ public class MainFrame extends JFrame {
     public void setupButtons() {
 
         JButton emptyButton = new JButton("Empty");
-        emptyButton.setBackground(Color.WHITE);
+        EmptySpace tempEmpty = new EmptySpace();
+        emptyButton.setBackground(tempEmpty.get_background_color());
         emptyButton.addActionListener(new EmptyButtonActionListener(this));
         barButtons.add(emptyButton);
 
         JButton wallButton = new JButton("Wall");
-        wallButton.setBackground(Color.GRAY);
+        wallButton.setBackground(new Color(240, 255, 240));
         wallButton.addActionListener(new WallButtonActionListener(this));
         barButtons.add(wallButton);
 
         JButton startButton = new JButton("Start");
-        startButton.setBackground(new Color(204, 223, 255));
+        Start tempStart = new Start();
+        startButton.setBackground(tempStart.get_background_color());
         startButton.addActionListener(new StartButtonActionListener(this));
         barButtons.add(startButton);
 
         JButton endButton = new JButton("End");
-        endButton.setBackground(new Color(211, 111, 242));
+        End tempEnd = new End();
+        endButton.setBackground(tempEnd.get_background_color());
         endButton.addActionListener(new EndButtonActionListener(this));
         barButtons.add(endButton);
 

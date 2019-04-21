@@ -2,6 +2,7 @@ package ui.mazeedit;
 
 import exceptions.CannotConvertException;
 import model.MazeMap;
+import model.blocks.EmptySpace;
 import ui.MainFrame;
 
 import javax.swing.*;
@@ -53,8 +54,9 @@ public class ChangeButton implements ActionListener {
             case ("Start"):
                 try {
                     String[] dimensionsStart = mazeMap.getStart().split(",");
-                    jButtons[Integer.parseInt(dimensionsStart[0])][Integer.parseInt(dimensionsStart[1])].setBackground(Color.WHITE);
-                    jButtons[Integer.parseInt(dimensionsStart[0])][Integer.parseInt(dimensionsStart[1])].setText("");
+                    EmptySpace tempEmpty = new EmptySpace();
+                    jButtons[Integer.parseInt(dimensionsStart[0])][Integer.parseInt(dimensionsStart[1])].setBackground(tempEmpty.get_background_color());
+                    jButtons[Integer.parseInt(dimensionsStart[0])][Integer.parseInt(dimensionsStart[1])].setText(tempEmpty.get_text_display());
                     mazeMap.changeBlock(width, height, "S");
                     changeBlock();
                 } catch (CannotConvertException e1) {
@@ -66,8 +68,9 @@ public class ChangeButton implements ActionListener {
             case ("End"):
                 try {
                     String[] dimensionsEnd = mazeMap.getEnd().split(",");
-                    jButtons[Integer.parseInt(dimensionsEnd[0])][Integer.parseInt(dimensionsEnd[1])].setBackground(Color.WHITE);
-                    jButtons[Integer.parseInt(dimensionsEnd[0])][Integer.parseInt(dimensionsEnd[1])].setText("");
+                    EmptySpace tempEmpty = new EmptySpace();
+                    jButtons[Integer.parseInt(dimensionsEnd[0])][Integer.parseInt(dimensionsEnd[1])].setBackground(tempEmpty.get_background_color());
+                    jButtons[Integer.parseInt(dimensionsEnd[0])][Integer.parseInt(dimensionsEnd[1])].setText(tempEmpty.get_text_display());
                     mazeMap.changeBlock(width, height, "E");
                     changeBlock();
                 } catch (CannotConvertException e1) {
