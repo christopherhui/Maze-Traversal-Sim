@@ -146,6 +146,12 @@ public class MazeMap extends SpecializedBlock {
         List<CoordPair<Integer, Integer>> directions = new ArrayList<>();
         boolean found = false;
 
+        int startX = Integer.parseInt(start.split(",")[1]);
+        int startY = Integer.parseInt(start.split(",")[0]);
+
+        int endX = Integer.parseInt(end.split(",")[1]);
+        int endY = Integer.parseInt(end.split(",")[0]);
+
         directions.add(new CoordPair<>(-1,0));
         directions.add(new CoordPair<>(0, -1));
         directions.add(new CoordPair<>(0, 1));
@@ -156,24 +162,24 @@ public class MazeMap extends SpecializedBlock {
                 visited[i][j] = false;
             }
         }
-        queue.add(new CoordPair<>(Integer.parseInt(start.split(",")[0]), Integer.parseInt(start.split(",")[1])));
-        visited[Integer.parseInt(start.split(",")[0])][Integer.parseInt(start.split(",")[1])] = true;
+        queue.add(new CoordPair<>(startX, startY));
+        visited[startY][startX] = true;
 
         CoordPair<Integer, Integer> curVal = null;
         while (!queue.isEmpty()) {
             curVal = queue.remove();
 
-            if (curVal.first == Integer.parseInt(end.split(",")[0])
-                    && curVal.second == Integer.parseInt(end.split(",")[1])) {
+            if (curVal.first == endX
+                    && curVal.second == endY) {
                 found = true;
                 break;
             }
 
             // Checks if it is the start or the end block, if it is, it doesn't do anything
-            if (curVal.first == Integer.parseInt(start.split(",")[0]) &&
-                    curVal.second == Integer.parseInt(start.split(",")[1]) ||
-                    curVal.first == Integer.parseInt(end.split(",")[0]) &&
-                    curVal.second == Integer.parseInt(end.split(",")[1])) {
+            if (curVal.first == startX &&
+                    curVal.second == startY ||
+                    curVal.first == endX &&
+                    curVal.second == endY) {
             }
             else {
                 maze[curVal.second][curVal.first] = bc.block_converter("V");
@@ -199,8 +205,8 @@ public class MazeMap extends SpecializedBlock {
 
         if (found) {
             curVal = parent.get(new CoordPair<>(curVal.first, curVal.second));
-            while (curVal.first != Integer.parseInt(start.split(",")[0])
-                    || curVal.second != Integer.parseInt(start.split(",")[1])) {
+            while (curVal.first != startX
+                    || curVal.second != startY) {
                 // Todo: Does a backtrack to find the path from start to end
                 maze[curVal.second][curVal.first] = bc.block_converter("F");
                 mazeInterface.changeButton(curVal.first, curVal.second, maze[curVal.second][curVal.first].get_background_color(), maze[curVal.second][curVal.first].get_text_display());
