@@ -2,14 +2,12 @@ package ui;
 
 import model.ListOfMaze;
 import ui.mazeedit.*;
-import ui.mazeselect.MazeSelect;
 import ui.menu.NewButtonAction;
 import ui.menu.OpenButtonAction;
 import ui.menu.SaveAsButtonAction;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
     private final int WIDTH = 800;
@@ -26,6 +24,7 @@ public class MainFrame extends JFrame {
     private String selectedButton;
     private JLabel textButtonSelect;
     private TraverseButtonActionListener traverseActionListener;
+    private MazeInterface mazeInterface;
 
     public MainFrame() {
         super("Maze Traversal Simulator");
@@ -64,7 +63,8 @@ public class MainFrame extends JFrame {
 
         //sideBar creation
         JList<String> mazesAvaliable = new JList<>(defaultListModel);
-        mazesAvaliable.addMouseListener(new MazeSelect(listOfMaze, selectedMaze, this));
+        mazeInterface = new MazeInterface(listOfMaze, selectedMaze, this);
+        mazesAvaliable.addMouseListener(mazeInterface);
         add(mazesAvaliable, BorderLayout.EAST);
 
         //JButton creation
@@ -118,6 +118,10 @@ public class MainFrame extends JFrame {
         traverseActionListener = new TraverseButtonActionListener(this, selectedMaze.get_curr_maze());
         traverseButton.addActionListener(traverseActionListener);
         barButtons.add(traverseButton);
+
+        JButton clearbutton = new JButton("Clear");
+        clearbutton.setBackground(Color.RED);
+        clearbutton.addActionListener(new ClearActionListener(this));
     }
 
     public void changeButtonStatus(String status) {

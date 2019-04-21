@@ -3,6 +3,7 @@ package ui.mazeedit;
 import exceptions.IllegalCharacterException;
 import model.MazeMap;
 import ui.MainFrame;
+import ui.MazeInterface;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

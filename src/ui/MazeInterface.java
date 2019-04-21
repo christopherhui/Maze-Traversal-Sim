@@ -1,4 +1,4 @@
-package ui.mazeselect;
+package ui;
 
 import model.ListOfMaze;
 import model.MazeMap;
@@ -11,13 +11,13 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MazeSelect implements MouseListener {
+public class MazeInterface implements MouseListener {
     private ListOfMaze listOfMaze;
     private CurrentMaze currentMaze;
     private MainFrame mainFrame;
     private JButton[][] jButtons;
 
-    public MazeSelect(ListOfMaze listOfMaze, CurrentMaze currentMaze, MainFrame mainFrame) {
+    public MazeInterface(ListOfMaze listOfMaze, CurrentMaze currentMaze, MainFrame mainFrame) {
         this.listOfMaze = listOfMaze;
         this.currentMaze = currentMaze;
         this.mainFrame = mainFrame;
@@ -71,6 +71,7 @@ public class MazeSelect implements MouseListener {
                 mainFrame.getButtonPane().add(jButtons[i][j]);
             }
         }
+        mazeMap.setMazeInterface(this);
     }
 
     public void removeMaze() {
