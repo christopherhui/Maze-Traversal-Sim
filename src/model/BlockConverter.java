@@ -11,7 +11,7 @@ public class BlockConverter {
     MazeMap mazeMap;
     AllBlocks allBlocks;
     BlockFactory blockFactory;
-    MazeInterface mazeInterface;
+
 
     public BlockConverter(MazeMap mazeMap) {
         this.mazeMap = mazeMap;
@@ -35,10 +35,6 @@ public class BlockConverter {
         }
         s.append(mazeMap.get_maze()[mazeMap.get_h()-1][mazeMap.get_w()-1].toString());
         return s.toString();
-    }
-
-    public void setMazeInterface(MazeInterface mazeInterface) {
-        this.mazeInterface = mazeInterface;
     }
 
     // REQUIRES: must be a valid block type

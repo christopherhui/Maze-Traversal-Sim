@@ -80,4 +80,9 @@ public class MazeInterface implements MouseListener {
         mainFrame.getButtonPane().revalidate();
         mainFrame.repaint();
     }
+
+    public void changeButton(int width, int height, Color color, String text) {
+        jButtons[height][width].setBackground(color);
+        jButtons[height][width].setText(text);
+    }
 }

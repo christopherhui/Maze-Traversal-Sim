@@ -24,6 +24,7 @@ public class MainFrame extends JFrame {
     private String selectedButton;
     private JLabel textButtonSelect;
     private TraverseButtonActionListener traverseActionListener;
+    private ClearButtonActionListener clearButtonActionListener;
     private MazeInterface mazeInterface;
 
     public MainFrame() {
@@ -89,6 +90,7 @@ public class MainFrame extends JFrame {
     public void setSelectedMaze(CurrentMaze selectedMaze) {
         this.selectedMaze = selectedMaze;
         traverseActionListener.setMazeMap(selectedMaze.get_curr_maze());
+        clearButtonActionListener.setMazeMap(selectedMaze.get_curr_maze());
     }
 
     public void setupButtons() {
@@ -121,7 +123,9 @@ public class MainFrame extends JFrame {
 
         JButton clearbutton = new JButton("Clear");
         clearbutton.setBackground(Color.RED);
-        clearbutton.addActionListener(new ClearActionListener(this));
+        clearButtonActionListener = new ClearButtonActionListener(this, selectedMaze.get_curr_maze());
+        clearbutton.addActionListener(clearButtonActionListener);
+        barButtons.add(clearbutton);
     }
 
     public void changeButtonStatus(String status) {

@@ -1,4 +1,4 @@
 package exceptions;
 
-public class CannotConvertException extends Exception {
+public class CannotConvertException extends Error {
 }

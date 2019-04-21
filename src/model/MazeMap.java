@@ -175,7 +175,10 @@ public class MazeMap extends SpecializedBlock {
                     curVal.first == Integer.parseInt(end.split(",")[0]) &&
                     curVal.second == Integer.parseInt(end.split(",")[1])) {
             }
-            else maze[curVal.second][curVal.first] = bc.block_converter("V");
+            else {
+                maze[curVal.second][curVal.first] = bc.block_converter("V");
+                mazeInterface.changeButton(curVal.first, curVal.second, maze[curVal.second][curVal.first].get_background_color(), maze[curVal.second][curVal.first].get_text_display());
+            }
 
             // Todo: Add a way to change the block's color, needs an association between ChangeButton and MazeMap
             // Todo: Check if the block is at the end, if it is, then you have finished searching
@@ -200,10 +203,22 @@ public class MazeMap extends SpecializedBlock {
                     || curVal.second != Integer.parseInt(start.split(",")[0])) {
                 // Todo: Does a backtrack to find the path from start to end
                 maze[curVal.second][curVal.first] = bc.block_converter("F");
+                mazeInterface.changeButton(curVal.first, curVal.second, maze[curVal.second][curVal.first].get_background_color(), maze[curVal.second][curVal.first].get_text_display());
                 curVal = parent.get(new CoordPair<>(curVal.first, curVal.second));
             }
         }
         System.out.println(this);
+    }
+
+    public void clearBlocks() {
+        for (int i = 0; i < mazeHLength; i++) {
+            for (int j = 0; j < mazeWLength; j++) {
+                if (maze[i][j].toString().equals("F") || maze[i][j].toString().equals("V")) {
+                    maze[i][j] = bc.block_converter("O");
+                    mazeInterface.changeButton(j, i, maze[i][j].get_background_color(), maze[i][j].get_text_display());
+                }
+            }
+        }
     }
 
     @Override
