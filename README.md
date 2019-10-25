@@ -19,6 +19,5 @@ The maze does a Breadth First Search maze traversal on the current maze, highlig
 
 ## Bugs and Notes
 - If you move the start button to other places around the maze, sometimes the traversal breaks.
-- Everything else has been tested with some degree, I do think I need to do more thorough testing though.
-- I plan on making the option to clear out the blocks so that you could be able to traverse it multiple times without seeing the traversed and path blocks.
+- The code base suffers from a high coupling due to data types of each block. We can abstract this by using the Strategy pattern.
 - Also let me know what else I should do! 
